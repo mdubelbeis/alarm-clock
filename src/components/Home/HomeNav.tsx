@@ -14,9 +14,16 @@ const ICON_DIMENSION = [
   },
 ];
 
-const HomeNav: React.FC = () => {
+interface HomeNavProps {
+  onClick: (bool: boolean) => void;
+}
+
+const HomeNav: React.FC<HomeNavProps> = ({ onClick }) => {
   return (
-    <nav>
+    <nav className="h-screen grid place-content-center">
+      <div className="absolute top-2 right-2" onClick={() => onClick(false)}>
+        <Icons d="M6 18L18 6M6 6l12 12" />
+      </div>
       <ul className="flex flex-col gap-4">
         {ICON_DIMENSION.map((icon) => {
           return (
