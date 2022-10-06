@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const HomeNav: React.FC = () => {
   return (
     <nav>
-      <ul>
+      <ul className="flex flex-col gap-4">
         <li>
           <Link to="/clock">
             <svg
@@ -12,7 +12,7 @@ const HomeNav: React.FC = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6"
+              className="w-20 h-20"
             >
               <path
                 strokeLinecap="round"
@@ -30,7 +30,7 @@ const HomeNav: React.FC = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6"
+              className="w-20 h-20"
             >
               <path
                 strokeLinecap="round"
@@ -48,7 +48,7 @@ const HomeNav: React.FC = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6"
+              className="w-20 h-20"
             >
               <path
                 strokeLinecap="round"
