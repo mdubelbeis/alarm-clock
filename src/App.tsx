@@ -1,10 +1,10 @@
 import Clock from "./components/Clock";
-import HomeMenu from "./pages/HomeMenu";
+import Menu from "./pages/Menu";
 
 const App = () => {
   return (
     <main className="flex justify-center items-center h-screen">
-      <HomeMenu />
+      <Menu />
       <Clock />
     </main>
   );
