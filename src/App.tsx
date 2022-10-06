@@ -1,4 +1,4 @@
-import Clock from "./components/Clock";
+import Clock from "./components/Clock/Time";
 import Menu from "./pages/Menu";
 
 const App = () => {
