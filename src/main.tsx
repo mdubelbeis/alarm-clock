@@ -10,18 +10,21 @@ import Home from "./components/Home/HomeNav";
 import Todo from "./pages/Todo";
 import Notes from "./pages/Notes";
 import HomeNav from "./components/Home/HomeNav";
+import HomePage from "./pages/Clock/HomePage";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/menu" element={<HomeNav />} />
-      <Route path="/clock" element={<Clock />}>
-        <Route path="clock/stop-watch" element={<StopWatch />} />
-        <Route path="clock/timer" element={<Timer />} />
+      <Route path="/" element={<App />}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/menu" element={<HomeNav />} />
+        <Route path="/clock" element={<Clock />}>
+          <Route path="clock/stop-watch" element={<StopWatch />} />
+          <Route path="clock/timer" element={<Timer />} />
+        </Route>
+        <Route path="/todo" element={<Todo />} />
+        <Route path="/notes" element={<Notes />} />
       </Route>
-      <Route path="/todo" element={<Todo />} />
-      <Route path="/notes" element={<Notes />} />
     </Routes>
   </BrowserRouter>
 );

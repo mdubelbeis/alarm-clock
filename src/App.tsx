@@ -1,14 +1,13 @@
-import HomeNav from "./components/Home/HomeNav";
+import { Outlet } from "react-router-dom";
+import Header from "./components/ui/Header";
 
 const App = () => {
   return (
     <div className="flex flex-col justify-around items-center h-screen">
-      <header>
-        <div className="font-mono text-4xl">MULTI-TOOL</div>
-      </header>
-      <section>
-        <HomeNav />
-      </section>
+      <Header />
+      <main>
+        <Outlet />
+      </main>
     </div>
   );
 };
