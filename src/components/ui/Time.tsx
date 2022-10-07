@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const Time: React.FC = () => {
-  const [output, setOutput] = useState<string>(new Date().toLocaleTimeString());
+  const [output, setOutput] = useState(new Date().toLocaleTimeString());
 
   useEffect(() => {
     setInterval(() => {
