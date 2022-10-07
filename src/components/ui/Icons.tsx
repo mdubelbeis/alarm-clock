@@ -6,7 +6,7 @@ interface IconProps {
 const Icons: React.FC<IconProps> = ({ d, width, id }) => {
   let textColor = "";
 
-  if (id === "completeIcon") {
+  if (id === "completeIcon" || id === 'playPauseIcon') {
     textColor = "text-green-500";
   } else if (id === "editIcon") {
     textColor = "text-orange-500";
