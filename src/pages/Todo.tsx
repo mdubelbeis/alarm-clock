@@ -62,6 +62,7 @@ const Todo: React.FC = () => {
             className="w-full md:w-full py-2 px-4 bg-white focus:outline-blue-500 rounded-2xl shadow-lg"
             type="text"
             autoFocus
+            placeholder="Add new task"
           />
         </label>
       </form>
