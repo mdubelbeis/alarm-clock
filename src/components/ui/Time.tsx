@@ -9,7 +9,11 @@ const Clock: React.FC = () => {
     }, 1000);
   });
 
-  return <p className="font-digital text-4xl tracking-wider">{output}</p>;
+  return (
+    <p className="font-digital text-4xl tracking-wider text-center mt-20">
+      {output}
+    </p>
+  );
 };
 
 export default Clock;
