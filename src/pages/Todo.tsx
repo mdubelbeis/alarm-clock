@@ -55,8 +55,8 @@ const Todo: React.FC = () => {
   });
 
   return (
-    <div className="p-4 max-w-6xl mx-auto flex flex-col gap-20 items-center mt-20 bg-slate-100">
-      <form className="w-full">
+    <div className="p-4 max-w-6xl mx-auto flex flex-col gap-20 items-center mt-20 lg:shadow-lg rounded-lg bg-slate-50">
+      <form className="relative w-full">
         <label>
           <input
             className="w-full md:w-full py-4 px-4 text-lg bg-white focus:outline-blue-500 rounded-2xl shadow-lg"
@@ -65,6 +65,9 @@ const Todo: React.FC = () => {
             placeholder="Add new task"
           />
         </label>
+        <button className="absolute py-2 px-4 top-[0.55rem] right-4 rounded-xl bg-blue-500 shadow-lg hover:bg-slate-50 hover:text-blue-500 text-white">
+          ADD
+        </button>
       </form>
       <div className="w-full">
         <ul className="flex flex-col lg:grid md:grid-cols-2 gap-4">
