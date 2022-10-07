@@ -4,9 +4,9 @@ import Header from "./components/ui/Header";
 
 const App = () => {
   return (
-    <div className="relative w-full max-w-6xl mx-auto">
+    <div className="flex flex-col justify-between relative w-full max-w-6xl mx-auto">
       <Header />
-      <main>
+      <main className="mt-20">
         <Outlet />
       </main>
       <Footer />

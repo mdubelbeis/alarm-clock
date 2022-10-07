@@ -55,7 +55,7 @@ const Todo: React.FC = () => {
   });
 
   return (
-    <div className="py-20 px-10 max-w-6xl mx-auto flex flex-col gap-20 items-center mt-20 lg:shadow-lg rounded-lg bg-slate-50">
+    <div className="py-20 px-10 max-w-6xl mx-auto flex flex-col gap-20 items-center lg:shadow-lg rounded-lg bg-slate-50">
       <form className="relative w-9/12 max-w-2xl">
         <label>
           <input
