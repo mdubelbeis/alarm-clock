@@ -31,20 +31,21 @@ const ICONS = [
 
 const Todo: React.FC = () => {
   const [todos, setTodos] = useState(TODOS);
+
   const icons = ICONS.map((icon) => {
     return (
       <li>
-        <Icons width={icon.width} d={icon.d} />
+        <Icons width={icon.width} d={icon.d} id={icon.name} />
       </li>
     );
   });
 
   const todoList = todos.map((todo) => {
     return (
-      <li className="flex justify-between w-full bg-white m-2 items-center p-4 rounded-2xl shadow-lg">
+      <li className="flex flex-col justify-between w-full gap-6 bg-white m-2 items-center p-4 rounded-2xl shadow-lg py-4">
         <h3>{todo.todo}</h3>
         <div>
-          <ul className="flex gap-4">{icons}</ul>
+          <ul className="flex gap-10">{icons}</ul>
         </div>
       </li>
     );
@@ -62,7 +63,9 @@ const Todo: React.FC = () => {
         </label>
       </form>
       <div className="w-full">
-        <ul className="flex flex-col gap-1">{todoList}</ul>
+        <ul className="flex flex-col md:grid md:grid-cols-2 gap-1">
+          {todoList}
+        </ul>
       </div>
     </div>
   );
