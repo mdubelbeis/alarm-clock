@@ -29,7 +29,7 @@ const HomeNav: React.FC<HomeNavProps> = ({ onClick }) => {
           return (
             <li>
               <Link to={icon.url}>
-                <Icons d={icon.d} />
+                <Icons d={icon.d} width="w-[90px]" />
               </Link>
             </li>
           );

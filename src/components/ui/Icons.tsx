@@ -10,7 +10,7 @@ const Icons: React.FC<IconProps> = ({ d, width }) => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className={width}
+      className={`${width} || w-10`}
     >
       <path strokeLinecap="round" strokeLinejoin="round" d={d} />
     </svg>
