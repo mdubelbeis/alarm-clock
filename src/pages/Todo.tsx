@@ -48,7 +48,7 @@ const Todo: React.FC = () => {
       >
         <h3 className="text-xl lg:text-2xl tracking-wide">{todo.todo}</h3>
         <div>
-          <ul className="flex gap-12">{icons}</ul>
+          <ul className="flex gap-12 lg:gap-8">{icons}</ul>
         </div>
       </li>
     );

@@ -10,7 +10,7 @@ const Time: React.FC = () => {
   });
 
   return (
-    <p className="font-digital text-4xl text-center bg-black text-green-500 py-10 rounded-xl">
+    <p className="font-digital text-9xl text-center w-full h-96 bg-black text-green-500 rounded-xl py-32 drop-shadow-xl">
       {output}
     </p>
   );
