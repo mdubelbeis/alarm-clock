@@ -46,7 +46,7 @@ const HomeNav: React.FC<HomeNavProps> = ({ onClick }) => {
               onClick={() => onClick(false)}
               className="flex flex-col justify-center items-center lg:flex-row"
             >
-              <p>{icon.name}</p>
+              <sub className="text-sm">{icon.name}</sub>
               <Link to={icon.url}>
                 <Icons d={icon.d} width="w-20 lg:w-6" />
               </Link>
