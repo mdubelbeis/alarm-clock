@@ -7,10 +7,17 @@ const Header: React.FC = () => {
 
   return (
     <header className="fixed top-0 flex justify-between items-center">
-      <div className="font-mono text-4xl">MULTI-TOOL</div>
-      <div className="" onClick={() => setShowMenu(true)}>
-        <Icons d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-      </div>
+      {!showMenu && (
+        <>
+          <div className="font-mono text-xl">MULTI-TOOL</div>
+          <div className="" onClick={() => setShowMenu(true)}>
+            <Icons
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              width="w-10"
+            />
+          </div>
+        </>
+      )}
       {showMenu && <HomeNav onClick={setShowMenu} />}
     </header>
   );

@@ -1,7 +1,8 @@
 interface IconProps {
   d: string;
+  width?: string;
 }
-const Icons: React.FC<IconProps> = ({ d }) => {
+const Icons: React.FC<IconProps> = ({ d, width }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9,7 +10,7 @@ const Icons: React.FC<IconProps> = ({ d }) => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-20 h-20"
+      className={width}
     >
       <path strokeLinecap="round" strokeLinejoin="round" d={d} />
     </svg>
