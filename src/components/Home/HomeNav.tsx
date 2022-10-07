@@ -26,7 +26,7 @@ interface HomeNavProps {
 
 const HomeNav: React.FC<HomeNavProps> = ({ onClick }) => {
   return (
-    <nav className="absolute top-0 left-0 bg-black text-white w-full h-screen grid place-content-center lg:flex lg:static lg:bg-white lg:text-black lg:w-auto lg:h-auto">
+    <nav className="fixed z-50 top-0 left-0 bg-black text-white w-full h-screen grid place-content-center lg:flex lg:static lg:bg-white lg:text-black lg:w-auto lg:h-auto">
       <div
         className="absolute top-6 left-6 font-mono text-xl lg:hidden"
         onClick={() => onClick(false)}
@@ -37,7 +37,7 @@ const HomeNav: React.FC<HomeNavProps> = ({ onClick }) => {
         className="absolute justify-self-end p-4 lg:hidden"
         onClick={() => onClick(false)}
       >
-        <Icons d="M6 18L18 6M6 6l12 12" />
+        <Icons d="M6 18L18 6M6 6l12 12" id="closeMenuIcon" />
       </div>
       <ul className="flex flex-col gap-20 lg:flex-row">
         {ICON_DIMENSION.map((icon) => {
@@ -48,7 +48,7 @@ const HomeNav: React.FC<HomeNavProps> = ({ onClick }) => {
             >
               <sub className="text-sm">{icon.name}</sub>
               <Link to={icon.url}>
-                <Icons d={icon.d} width="w-20 lg:w-6" />
+                <Icons d={icon.d} width="w-20 lg:w-6" id={icon.name} />
               </Link>
             </li>
           );

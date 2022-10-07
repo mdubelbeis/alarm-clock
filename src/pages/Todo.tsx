@@ -63,7 +63,7 @@ const Todo: React.FC = () => {
         </label>
       </form>
       <div className="w-full">
-        <ul className="flex flex-col md:grid md:grid-cols-2 gap-1">
+        <ul className="flex flex-col md:grid md:grid-cols-2 gap-4">
           {todoList}
         </ul>
       </div>
