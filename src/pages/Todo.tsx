@@ -57,6 +57,7 @@ const Todo: React.FC = () => {
           <input
             className="w-full py-2 px-4 bg-white focus:outline-blue-500 rounded-2xl shadow-lg"
             type="text"
+            autoFocus
           />
         </label>
       </form>
