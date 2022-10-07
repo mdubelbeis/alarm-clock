@@ -26,29 +26,29 @@ interface HomeNavProps {
 
 const HomeNav: React.FC<HomeNavProps> = ({ onClick }) => {
   return (
-    <nav className="relative bg-black text-white w-full h-screen grid place-content-center">
+    <nav className="absolute top-0 left-0 bg-black text-white w-full h-screen grid place-content-center lg:flex lg:static lg:bg-white lg:text-black lg:w-auto lg:h-auto">
       <div
-        className="absolute top-6 left-6 font-mono text-xl"
+        className="absolute top-6 left-6 font-mono text-xl lg:hidden"
         onClick={() => onClick(false)}
       >
         <Link to="/">MULTI-TOOL</Link>
       </div>
       <div
-        className="absolute justify-self-end p-4"
+        className="absolute justify-self-end p-4 lg:hidden"
         onClick={() => onClick(false)}
       >
         <Icons d="M6 18L18 6M6 6l12 12" />
       </div>
-      <ul className="flex flex-col gap-20">
+      <ul className="flex flex-col gap-20 lg:flex-row">
         {ICON_DIMENSION.map((icon) => {
           return (
             <li
               onClick={() => onClick(false)}
-              className="flex flex-col justify-center items-center"
+              className="flex flex-col justify-center items-center lg:flex-row"
             >
               <p>{icon.name}</p>
               <Link to={icon.url}>
-                <Icons d={icon.d} width="w-20" />
+                <Icons d={icon.d} width="w-20 lg:w-6" />
               </Link>
             </li>
           );

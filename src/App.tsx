@@ -4,7 +4,7 @@ import Header from "./components/ui/Header";
 
 const App = () => {
   return (
-    <div className="h-screen w-full max-w-6xl mx-auto">
+    <div className="relative w-full max-w-6xl mx-auto">
       <Header />
       <main>
         <Outlet />

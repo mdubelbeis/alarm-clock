@@ -16,10 +16,10 @@ import Time from "../../components/ui/Time";
 
 const Clock: React.FC = () => {
   return (
-    <main className="text-black flex flex-col justify-center items-center h-screen gap-10">
+    <div className="text-black flex flex-col justify-center items-center h-screen gap-10">
       <ClockNav />
       <Time />
-    </main>
+    </div>
   );
 };
 
