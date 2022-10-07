@@ -16,7 +16,7 @@ import Time from "../../components/ui/Time";
 
 const Clock: React.FC = () => {
   return (
-    <div className="h-screen w-full mx-auto">
+    <div className="h-screen w-full bg-green mx-auto">
       <ClockNav />
       <Time />
     </div>
