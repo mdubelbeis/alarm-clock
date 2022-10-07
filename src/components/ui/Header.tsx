@@ -30,7 +30,7 @@ const Header: React.FC = () => {
       </div>
       <div className="hidden lg:block mx-auto">
         <div className="flex justify-between items-center w-full p-4">
-          <div className="font-mono text-xl">
+          <div className="font-mono text-xl hover:text-blue-500 active:text-blue-700 tracking-wider">
             <Link to="/">MULTI-TOOL</Link>
           </div>
           <div>

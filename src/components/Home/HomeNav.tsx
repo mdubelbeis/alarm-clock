@@ -28,7 +28,7 @@ const HomeNav: React.FC<HomeNavProps> = ({ onClick }) => {
   return (
     <nav className="fixed z-50 top-0 left-0 bg-black text-white w-full h-screen grid place-content-center lg:flex lg:static lg:bg-white lg:text-black lg:w-auto lg:h-auto">
       <div
-        className="absolute top-6 left-6 font-mono text-xl lg:hidden"
+        className="absolute top-6 left-6 font-mono text-xl lg:hidden hover:text-blue-500 active:text-blue-700 tracking-wider"
         onClick={() => onClick(false)}
       >
         <Link to="/">MULTI-TOOL</Link>
