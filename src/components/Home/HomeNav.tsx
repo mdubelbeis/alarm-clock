@@ -20,8 +20,8 @@ interface HomeNavProps {
 
 const HomeNav: React.FC<HomeNavProps> = ({ onClick }) => {
   return (
-    <nav className="h-screen grid place-content-center">
-      <div className="absolute top-2 right-2" onClick={() => onClick(false)}>
+    <nav className="relative w-screen h-screen grid place-content-center">
+      <div className="absolute justify-self-end" onClick={() => onClick(false)}>
         <Icons d="M6 18L18 6M6 6l12 12" />
       </div>
       <ul className="flex flex-col gap-4">

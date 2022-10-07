@@ -4,7 +4,7 @@ import Header from "./components/ui/Header";
 
 const App = () => {
   return (
-    <div className="flex flex-col justify-around items-center h-screen">
+    <div className="h-screen">
       <Header />
       <main>
         <Outlet />
