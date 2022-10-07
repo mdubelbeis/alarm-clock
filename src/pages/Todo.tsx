@@ -44,10 +44,10 @@ const Todo: React.FC = () => {
     return (
       <li
         key={todo.id}
-        className="flex flex-col justify-between w-full gap-6 bg-white m-2 items-center p-4 rounded-2xl shadow-lg py-4 hover:bg-slate-100"
+        className="flex flex-col lg:flex-row xl:flex-col justify-between w-full gap-6 bg-white m-2 items-center p-4 rounded-2xl shadow-lg py-4 hover:bg-slate-100"
       >
-        <h3>{todo.todo}</h3>
-        <div>
+        <h3 className="text-xl tracking-wide">{todo.todo}</h3>
+        <div className="pt-6 md:pt-6 lg:pt-0">
           <ul className="flex gap-10">{icons}</ul>
         </div>
       </li>
@@ -55,7 +55,7 @@ const Todo: React.FC = () => {
   });
 
   return (
-    <div className="p-4 max-w-3xl mx-auto flex flex-col gap-20 items-center mt-20">
+    <div className="p-4 max-w-6xl mx-auto flex flex-col gap-20 items-center mt-20">
       <form className="w-11/12">
         <label>
           <input
@@ -67,7 +67,7 @@ const Todo: React.FC = () => {
         </label>
       </form>
       <div className="w-full">
-        <ul className="flex flex-col md:grid md:grid-cols-2 gap-4">
+        <ul className="flex flex-col lg:grid lg:grid-cols-2 gap-4">
           {todoList}
         </ul>
       </div>
