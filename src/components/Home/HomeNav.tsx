@@ -43,11 +43,15 @@ const HomeNav: React.FC<HomeNavProps> = ({ onClick }) => {
         {ICON_DIMENSION.map((icon) => {
           return (
             <li
+              key={icon.name}
               onClick={() => onClick(false)}
               className="flex flex-col justify-center items-center lg:flex-row"
             >
-              <sub className="text-sm">{icon.name}</sub>
-              <Link to={icon.url}>
+              <Link
+                to={icon.url}
+                className="flex active:text-blue-700 hover:text-blue-500"
+              >
+                <sub className="text-sm">{icon.name}</sub>
                 <Icons d={icon.d} width="w-20 lg:w-6" id={icon.name} />
               </Link>
             </li>

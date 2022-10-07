@@ -34,7 +34,7 @@ const Todo: React.FC = () => {
 
   const icons = ICONS.map((icon) => {
     return (
-      <li className="hover:cursor-pointer">
+      <li key={icon.id} className="hover:cursor-pointer">
         <Icons width={icon.width} d={icon.d} id={icon.name} />
       </li>
     );
@@ -42,7 +42,10 @@ const Todo: React.FC = () => {
 
   const todoList = todos.map((todo) => {
     return (
-      <li className="flex flex-col justify-between w-full gap-6 bg-white m-2 items-center p-4 rounded-2xl shadow-lg py-4 hover:bg-slate-100">
+      <li
+        key={todo.id}
+        className="flex flex-col justify-between w-full gap-6 bg-white m-2 items-center p-4 rounded-2xl shadow-lg py-4 hover:bg-slate-100"
+      >
         <h3>{todo.todo}</h3>
         <div>
           <ul className="flex gap-10">{icons}</ul>

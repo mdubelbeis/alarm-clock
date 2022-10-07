@@ -14,10 +14,14 @@ const Header: React.FC = () => {
             <div className="font-mono text-xl">
               <Link to="/">MULTI-TOOL</Link>
             </div>
-            <div className="lg:hidden" onClick={() => setShowMenu(true)}>
+            <div
+              className="lg:hidden hover:cursor-pointer"
+              onClick={() => setShowMenu(true)}
+            >
               <Icons
                 d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                 width="w-10"
+                id="hamburgerIcon"
               />
             </div>
           </div>
