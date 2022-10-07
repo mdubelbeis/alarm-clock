@@ -6,9 +6,9 @@ const Header: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <header className="w-full p-4 fixed top-0 flex justify-between items-center">
+    <header className="w-full fixed top-0 flex justify-between items-center">
       {!showMenu && (
-        <div className="flex justify-between items-center w-full">
+        <div className="flex justify-between items-center w-full p-4">
           <div className="font-mono text-xl">MULTI-TOOL</div>
           <div className="" onClick={() => setShowMenu(true)}>
             <Icons
