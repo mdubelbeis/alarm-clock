@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Icons from "../components/ui/Icons";
 
 const TODOS = [
@@ -29,6 +30,7 @@ const ICONS = [
 ];
 
 const Todo: React.FC = () => {
+  const [todos, setTodos] = useState(TODOS);
   const icons = ICONS.map((icon) => {
     return (
       <li>
@@ -37,9 +39,9 @@ const Todo: React.FC = () => {
     );
   });
 
-  const todoList = TODOS.map((todo) => {
+  const todoList = todos.map((todo) => {
     return (
-      <li className="flex justify-between w-full bg-slate-200 m-2 items-center p-4">
+      <li className="flex justify-between w-full bg-white m-2 items-center p-4 rounded-2xl shadow-lg">
         <h3>{todo.todo}</h3>
         <div>
           <ul className="flex gap-4">{icons}</ul>
@@ -49,14 +51,17 @@ const Todo: React.FC = () => {
   });
 
   return (
-    <div className="p-4 max-w-3xl mx-auto">
-      <form>
+    <div className="p-4 max-w-3xl mx-auto flex flex-col gap-20 items-center mt-20">
+      <form className="w-full">
         <label>
-          <input type="text" />
+          <input
+            className="w-full py-2 px-4 bg-white focus:outline-blue-500 rounded-2xl shadow-lg"
+            type="text"
+          />
         </label>
       </form>
-      <div>
-        <ul>{todoList}</ul>
+      <div className="w-full">
+        <ul className="flex flex-col gap-1">{todoList}</ul>
       </div>
     </div>
   );
