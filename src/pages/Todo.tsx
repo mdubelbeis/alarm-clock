@@ -56,10 +56,10 @@ const Todo: React.FC = () => {
 
   return (
     <div className="p-4 max-w-6xl mx-auto flex flex-col gap-20 items-center mt-20">
-      <form className="w-11/12">
+      <form className="w-full">
         <label>
           <input
-            className="w-full md:w-full py-2 px-4 bg-white focus:outline-blue-500 rounded-2xl shadow-lg"
+            className="w-full md:w-full py-4 px-4 text-lg bg-white focus:outline-blue-500 rounded-2xl shadow-lg"
             type="text"
             autoFocus
             placeholder="Add new task"

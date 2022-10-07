@@ -16,7 +16,7 @@ import Time from "../../components/ui/Time";
 
 const Clock: React.FC = () => {
   return (
-    <div className="mt-20 flex flex-col justify-around h-full items-center">
+    <div className="mt-20 flex flex-col gap-10 justify-around h-full items-center text-green-500">
       <ClockNav />
       <Time />
     </div>
