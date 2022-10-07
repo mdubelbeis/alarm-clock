@@ -39,7 +39,7 @@ const HomeNav: React.FC<HomeNavProps> = ({ onClick }) => {
       >
         <Icons d="M6 18L18 6M6 6l12 12" id="closeMenuIcon" />
       </div>
-      <ul className="flex flex-col gap-20 lg:flex-row">
+      <ul className="flex flex-col gap-20 lg:gap-10 lg:flex-row">
         {ICON_DIMENSION.map((icon) => {
           return (
             <li
