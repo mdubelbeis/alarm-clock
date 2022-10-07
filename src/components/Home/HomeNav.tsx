@@ -27,7 +27,12 @@ interface HomeNavProps {
 const HomeNav: React.FC<HomeNavProps> = ({ onClick }) => {
   return (
     <nav className="relative bg-black text-white w-full h-screen grid place-content-center">
-      <div className="absolute top-6 left-6 font-mono text-xl">MULTI-TOOL</div>
+      <div
+        className="absolute top-6 left-6 font-mono text-xl"
+        onClick={() => onClick(false)}
+      >
+        <Link to="/">MULTI-TOOL</Link>
+      </div>
       <div
         className="absolute justify-self-end p-4"
         onClick={() => onClick(false)}
