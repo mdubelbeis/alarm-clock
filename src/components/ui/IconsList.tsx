@@ -39,7 +39,6 @@ const IconsList: React.FC<IconsListProps> = ({
       case "trashIcon":
         handleDeleteTodo();
         break;
-      //* Future Feature
       case "editIcon":
         handleEditTodo();
         break;
@@ -50,12 +49,6 @@ const IconsList: React.FC<IconsListProps> = ({
         console.log("idk what that is ");
     }
   };
-
-  const deleteTodo = () => {};
-
-  const editTodo = () => {};
-
-  const completeTodo = () => {};
 
   return (
     <>
@@ -70,7 +63,6 @@ const IconsList: React.FC<IconsListProps> = ({
           </li>
         );
       })}
-      ;
     </>
   );
 };

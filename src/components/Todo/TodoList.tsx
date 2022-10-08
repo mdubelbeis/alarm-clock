@@ -14,9 +14,9 @@ const TodoList = () => {
 
   const handleNewTodo = () => {};
 
-  //* Later feature
   const handleEditTodo = () => {
-    console.log("edited todo");
+    console.log("Edited todo");
+    //* FUTURE FEATURE
   };
 
   const handleDeleteTodo = () => {
