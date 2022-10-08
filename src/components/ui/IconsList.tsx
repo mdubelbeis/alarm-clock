@@ -21,7 +21,33 @@ const ICONS = [
   },
 ];
 
-const IconsList: React.FC = () => {
+interface IconsListProps {
+  todo: { id: number; todo: string; isComplete: boolean };
+}
+
+const IconsList: React.FC<IconsListProps> = ({ todo }) => {
+  const handleBTN = (iconName: string) => {
+    switch (iconName) {
+      case "trashIcon":
+        deleteTodo();
+        break;
+      case "editIcon":
+        editTodo();
+        break;
+      case "completeIcon":
+        completeTodo();
+        break;
+      default:
+        console.log("idk what that is ");
+    }
+  };
+
+  const deleteTodo = () => {};
+
+  const editTodo = () => {};
+
+  const completeTodo = () => {};
+
   return (
     <>
       {ICONS.map((icon) => {
