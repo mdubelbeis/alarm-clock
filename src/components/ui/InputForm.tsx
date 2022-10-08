@@ -14,6 +14,7 @@ const InputForm: React.FC<InputFormProps> = ({ handleNewTodo }) => {
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     handleNewTodo(todo);
+    setTodo("");
   };
 
   return (

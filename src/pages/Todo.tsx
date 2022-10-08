@@ -15,7 +15,10 @@ const Todo: React.FC = () => {
   const [todos, setTodos] = useState(TODOS);
 
   const handleNewTodo = (newTodo: string) => {
-    setTodo((prevTodos) => {id: Math.random(), todo: `${newTodo}`, isComplete: false}, ...prevTodos);
+    setTodos([
+      { id: Math.random(), todo: newTodo, isComplete: false },
+      ...todos,
+    ]);
   };
 
   return (
