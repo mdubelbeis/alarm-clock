@@ -12,7 +12,9 @@ const Header: React.FC = () => {
         {!showMenu && (
           <div className="flex justify-between items-center w-full p-4">
             <div className="font-mono text-xl">
-              <Link to="/">MULTI-TOOL</Link>
+              <Link to="/">
+                <span className="text-blue-500">MULTI</span>-TOOL
+              </Link>
             </div>
             <div
               className="lg:hidden hover:cursor-pointer"
@@ -31,7 +33,9 @@ const Header: React.FC = () => {
       <div className="hidden lg:block mx-auto">
         <div className="flex justify-between items-center w-full p-4">
           <div className="font-mono text-xl hover:text-blue-500 active:text-blue-700 tracking-wider">
-            <Link to="/">MULTI-TOOL</Link>
+            <Link to="/">
+              <span className="text-blue-500">MULTI</span>-TOOL
+            </Link>
           </div>
           <div>
             <HomeNav onClick={() => {}} />

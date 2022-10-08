@@ -31,7 +31,9 @@ const HomeNav: React.FC<HomeNavProps> = ({ onClick }) => {
         className="absolute top-6 left-6 font-mono text-xl lg:hidden hover:text-blue-500 active:text-blue-700 tracking-wider"
         onClick={() => onClick(false)}
       >
-        <Link to="/">MULTI-TOOL</Link>
+        <Link to="/">
+          <span className="text-blue-500">MULTI</span>-TOOL
+        </Link>
       </div>
       <div
         className="absolute justify-self-end p-4 lg:hidden"
@@ -39,7 +41,7 @@ const HomeNav: React.FC<HomeNavProps> = ({ onClick }) => {
       >
         <Icons d="M6 18L18 6M6 6l12 12" id="closeMenuIcon" />
       </div>
-      <ul className="flex flex-col gap-20 lg:gap-10 lg:flex-row">
+      <ul className="flex flex-col gap-20 lg:gap-10 lg:flex-row lg:bg-slate-50">
         {ICON_DIMENSION.map((icon) => {
           return (
             <li
