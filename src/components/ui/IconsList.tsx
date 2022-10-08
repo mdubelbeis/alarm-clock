@@ -25,10 +25,12 @@ interface IconsListProps {
   todo: { id: number; todo: string; isComplete: boolean };
   handleDeleteTodo: () => void;
   handleCompleteTodo: () => void;
+  handleEditTodo: () => void;
 }
 
 const IconsList: React.FC<IconsListProps> = ({
   todo,
+  handleEditTodo,
   handleDeleteTodo,
   handleCompleteTodo,
 }) => {
@@ -38,9 +40,9 @@ const IconsList: React.FC<IconsListProps> = ({
         handleDeleteTodo();
         break;
       //* Future Feature
-      // case "editIcon":
-      //   editTodo();
-      //   break;
+      case "editIcon":
+        handleEditTodo();
+        break;
       case "completeIcon":
         handleCompleteTodo();
         break;

@@ -15,7 +15,9 @@ const TodoList = () => {
   const handleNewTodo = () => {};
 
   //* Later feature
-  // const handleEditTodo = () => {};
+  const handleEditTodo = () => {
+    console.log("edited todo");
+  };
 
   const handleDeleteTodo = () => {
     console.log("Deleted todo");
@@ -40,6 +42,7 @@ const TodoList = () => {
                   todo={todo}
                   handleDeleteTodo={handleDeleteTodo}
                   handleCompleteTodo={handleCompleteTodo}
+                  handleEditTodo={handleEditTodo}
                 />
               </ul>
             </div>
