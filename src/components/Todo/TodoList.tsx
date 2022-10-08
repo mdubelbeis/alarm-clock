@@ -12,6 +12,19 @@ const TODOS = [
 const TodoList = () => {
   const [todos, setTodos] = useState(TODOS);
 
+  const handleNewTodo = () => {};
+
+  //* Later feature
+  // const handleEditTodo = () => {};
+
+  const handleDeleteTodo = () => {
+    console.log("Deleted todo");
+  };
+
+  const handleCompleteTodo = () => {
+    console.log("Completed Todo");
+  };
+
   return (
     <>
       {todos.map((todo) => {
@@ -23,7 +36,11 @@ const TodoList = () => {
             <h3 className="text-xl lg:text-2xl tracking-wide">{todo.todo}</h3>
             <div>
               <ul className="flex gap-12 lg:gap-8">
-                <IconsList todo={todo} />
+                <IconsList
+                  todo={todo}
+                  handleDeleteTodo={handleDeleteTodo}
+                  handleCompleteTodo={handleCompleteTodo}
+                />
               </ul>
             </div>
           </li>

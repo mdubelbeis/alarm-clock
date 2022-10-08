@@ -23,19 +23,26 @@ const ICONS = [
 
 interface IconsListProps {
   todo: { id: number; todo: string; isComplete: boolean };
+  handleDeleteTodo: () => void;
+  handleCompleteTodo: () => void;
 }
 
-const IconsList: React.FC<IconsListProps> = ({ todo }) => {
+const IconsList: React.FC<IconsListProps> = ({
+  todo,
+  handleDeleteTodo,
+  handleCompleteTodo,
+}) => {
   const handleBTN = (iconName: string) => {
     switch (iconName) {
       case "trashIcon":
-        deleteTodo();
+        handleDeleteTodo();
         break;
-      case "editIcon":
-        editTodo();
-        break;
+      //* Future Feature
+      // case "editIcon":
+      //   editTodo();
+      //   break;
       case "completeIcon":
-        completeTodo();
+        handleCompleteTodo();
         break;
       default:
         console.log("idk what that is ");
