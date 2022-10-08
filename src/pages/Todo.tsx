@@ -65,7 +65,7 @@ const Todo: React.FC = () => {
             placeholder="Add new task"
           />
         </label>
-        <button className="absolute py-2 px-4 top-[0.55rem] right-2 rounded-xl bg-blue-500 shadow-lg hover:bg-slate-50 hover:text-blue-500 text-white">
+        <button className="absolute py-2 px-4 top-[0.55rem] tracking-wider right-2 rounded-xl bg-blue-500 shadow-lg hover:bg-slate-50 hover:text-blue-500 text-white">
           ADD
         </button>
       </form>
