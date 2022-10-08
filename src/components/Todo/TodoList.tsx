@@ -2,18 +2,10 @@ import { useState } from "react";
 
 import IconsList from "../ui/IconsList";
 
-const TODOS = [
-  { id: Math.random(), todo: "Meta Certificate", isComplete: false },
-  { id: Math.random(), todo: "Build Projects", isComplete: false },
-  { id: Math.random(), todo: "Apply for jobs", isComplete: false },
-  { id: Math.random(), todo: "Study", isComplete: false },
-];
-
-const TodoList = () => {
-  const [todos, setTodos] = useState(TODOS);
-
-  const handleNewTodo = () => {};
-
+interface TodoListProps {
+  todos: { id: number; todo: string; isComplete: boolean }[];
+}
+const TodoList: React.FC<TodoListProps> = ({ todos }) => {
   const handleEditTodo = () => {
     console.log("Edited todo");
     //* FUTURE FEATURE
