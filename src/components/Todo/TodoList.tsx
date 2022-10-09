@@ -1,15 +1,11 @@
-import IconsList from "../ui/IconsList";
+import TodoIcons from "./todoIcons";
 
 interface TodoListProps {
   todos: { id: number; todo: string; isComplete: boolean }[];
   deleteTodo: (todo: string) => void;
+  editTodo: () => void;
 }
-const TodoList: React.FC<TodoListProps> = ({ todos, deleteTodo }) => {
-  const handleEditTodo = () => {
-    console.log("Edited todo");
-    //* FUTURE FEATURE
-  };
-
+const TodoList: React.FC<TodoListProps> = ({ todos, deleteTodo, editTodo }) => {
   const handleCompleteTodo = () => {
     console.log("Completed Todo");
   };
@@ -25,11 +21,11 @@ const TodoList: React.FC<TodoListProps> = ({ todos, deleteTodo }) => {
             <h3 className="text-xl lg:text-2xl tracking-wide">{todo.todo}</h3>
             <div>
               <ul className="flex gap-12 lg:gap-8">
-                <IconsList
+                <TodoIcons
                   todo={todo}
                   handleDeleteTodo={deleteTodo}
                   handleCompleteTodo={handleCompleteTodo}
-                  handleEditTodo={handleEditTodo}
+                  handleEditTodo={editTodo}
                 />
               </ul>
             </div>

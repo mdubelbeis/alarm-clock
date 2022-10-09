@@ -14,12 +14,19 @@ const Todo: React.FC = () => {
   // Passed Down edit info for some dynamic data for user to see on todo
   const [editCount, setEditCount] = useState(0);
   const [todos, setTodos] = useState(TODOS);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleNewTodo = (newTodo: string) => {
-    setTodos([
-      { id: Math.random(), todo: newTodo, isComplete: false },
-      ...todos,
-    ]);
+    if (newTodo.length > 0) {
+      setTodos([
+        { id: Math.random(), todo: newTodo, isComplete: false },
+        ...todos,
+      ]);
+      setErrorMessage("");
+    } else {
+      setErrorMessage("A Todo must have at least one character...");
+    }
+    return;
   };
 
   const deleteTodo = (todo: string) => {
@@ -27,16 +34,19 @@ const Todo: React.FC = () => {
     setTodos(filteredTodos);
   };
 
-  const editTodo = (edit: string, priority?: string) => {
-    setEditCount((prevCount) => prevCount + 1);
-  };
+  const editTodo = () => {};
 
   return (
-    <div className="py-20 px-10 max-w-6xl mx-auto flex flex-col gap-20 items-center lg:shadow-lg rounded-lg bg-slate-50">
+    <div className="relative py-20 px-10 max-w-6xl mx-auto flex flex-col gap-20 items-center lg:shadow-lg rounded-lg bg-slate-50">
+      {errorMessage && (
+        <small className="absolute top-40 left-24 text-red-500 tracking-wider">
+          {errorMessage}
+        </small>
+      )}
       <InputForm handleNewTodo={handleNewTodo} />
       <div className="w-full">
         <ul className="flex flex-col lg:grid md:grid-cols-2 gap-4">
-          <TodoList todos={todos} deleteTodo={deleteTodo} />
+          <TodoList todos={todos} deleteTodo={deleteTodo} editTodo={editTodo} />
         </ul>
       </div>
     </div>

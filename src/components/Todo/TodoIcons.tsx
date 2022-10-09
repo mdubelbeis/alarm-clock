@@ -1,4 +1,4 @@
-import Icons from "./Icons";
+import Icons from "../ui/Icons";
 
 const ICONS = [
   {
@@ -21,14 +21,14 @@ const ICONS = [
   },
 ];
 
-interface IconsListProps {
+interface TodoIconsProps {
   todo: { id: number; todo: string; isComplete: boolean };
   handleDeleteTodo: (todo: string) => void;
   handleCompleteTodo: () => void;
   handleEditTodo: () => void;
 }
 
-const IconsList: React.FC<IconsListProps> = ({
+const TodoIcons: React.FC<TodoIconsProps> = ({
   todo,
   handleEditTodo,
   handleDeleteTodo,
@@ -67,4 +67,4 @@ const IconsList: React.FC<IconsListProps> = ({
   );
 };
 
-export default IconsList;
+export default TodoIcons;
