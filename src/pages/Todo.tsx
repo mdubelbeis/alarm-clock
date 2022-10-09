@@ -39,7 +39,7 @@ const Todo: React.FC = () => {
   return (
     <div className="relative py-20 px-10 max-w-6xl mx-auto flex flex-col gap-20 items-center lg:shadow-lg rounded-lg bg-slate-50">
       {errorMessage && (
-        <small className="absolute top-40 left-24 text-red-500 tracking-wider">
+        <small className="absolute top-40 left-14 md:left-20 lg:left-48 xl:left-64 text-red-500 tracking-wider">
           {errorMessage}
         </small>
       )}
