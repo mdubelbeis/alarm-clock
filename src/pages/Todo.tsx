@@ -11,7 +11,8 @@ const TODOS = [
 ];
 
 const Todo: React.FC = () => {
-  const [todo, setTodo] = useState({});
+  // Passed Down edit info for some dynamic data for user to see on todo
+  const [editCount, setEditCount] = useState(0);
   const [todos, setTodos] = useState(TODOS);
 
   const handleNewTodo = (newTodo: string) => {
@@ -23,8 +24,11 @@ const Todo: React.FC = () => {
 
   const deleteTodo = (todo: string) => {
     const filteredTodos = todos.filter((task) => task.todo !== todo);
-
     setTodos(filteredTodos);
+  };
+
+  const editTodo = (edit: string) => {
+    setEditCount((prevCount) => prevCount + 1);
   };
 
   return (

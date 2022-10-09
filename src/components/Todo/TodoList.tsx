@@ -10,10 +10,6 @@ const TodoList: React.FC<TodoListProps> = ({ todos, deleteTodo }) => {
     //* FUTURE FEATURE
   };
 
-  const handleDeleteTodo = (todo: string) => {
-    deleteTodo(todo);
-  };
-
   const handleCompleteTodo = () => {
     console.log("Completed Todo");
   };
@@ -31,7 +27,7 @@ const TodoList: React.FC<TodoListProps> = ({ todos, deleteTodo }) => {
               <ul className="flex gap-12 lg:gap-8">
                 <IconsList
                   todo={todo}
-                  handleDeleteTodo={handleDeleteTodo}
+                  handleDeleteTodo={deleteTodo}
                   handleCompleteTodo={handleCompleteTodo}
                   handleEditTodo={handleEditTodo}
                 />
