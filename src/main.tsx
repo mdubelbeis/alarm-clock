@@ -10,6 +10,7 @@ import Todo from "./pages/Todo";
 import Notes from "./pages/Notes";
 import HomeNav from "./components/Home/HomeNav";
 import HomePage from "./pages/HomePage";
+import Calculator from "./pages/Calculator";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <BrowserRouter>
@@ -21,6 +22,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <Route path="clock/timer" element={<Timer />} />
         <Route path="/todo" element={<Todo />} />
         <Route path="/notes" element={<Notes />} />
+        <Route path="/calculator" element={<Calculator />} />
       </Route>
     </Routes>
   </BrowserRouter>
