@@ -27,7 +27,7 @@ const Todo: React.FC = () => {
     setTodos(filteredTodos);
   };
 
-  const editTodo = (edit: string) => {
+  const editTodo = (edit: string, priority?: string) => {
     setEditCount((prevCount) => prevCount + 1);
   };
 
