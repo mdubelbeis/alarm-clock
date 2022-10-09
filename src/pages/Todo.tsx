@@ -21,12 +21,18 @@ const Todo: React.FC = () => {
     ]);
   };
 
+  const deleteTodo = (todo: string) => {
+    const filteredTodos = todos.filter((task) => task.todo !== todo);
+
+    setTodos(filteredTodos);
+  };
+
   return (
     <div className="py-20 px-10 max-w-6xl mx-auto flex flex-col gap-20 items-center lg:shadow-lg rounded-lg bg-slate-50">
       <InputForm handleNewTodo={handleNewTodo} />
       <div className="w-full">
         <ul className="flex flex-col lg:grid md:grid-cols-2 gap-4">
-          <TodoList todos={todos} />
+          <TodoList todos={todos} deleteTodo={deleteTodo} />
         </ul>
       </div>
     </div>

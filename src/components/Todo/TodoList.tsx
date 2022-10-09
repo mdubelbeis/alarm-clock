@@ -1,18 +1,17 @@
-import { useState } from "react";
-
 import IconsList from "../ui/IconsList";
 
 interface TodoListProps {
   todos: { id: number; todo: string; isComplete: boolean }[];
+  deleteTodo: (todo: string) => void;
 }
-const TodoList: React.FC<TodoListProps> = ({ todos }) => {
+const TodoList: React.FC<TodoListProps> = ({ todos, deleteTodo }) => {
   const handleEditTodo = () => {
     console.log("Edited todo");
     //* FUTURE FEATURE
   };
 
-  const handleDeleteTodo = () => {
-    console.log("Deleted todo");
+  const handleDeleteTodo = (todo: string) => {
+    deleteTodo(todo);
   };
 
   const handleCompleteTodo = () => {
