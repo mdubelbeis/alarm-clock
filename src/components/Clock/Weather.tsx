@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import TodayDate from "../ui/TodayDate";
 
 const Weather: React.FC = () => {
   const [weatherData, setWeatherData] = useState(null);
@@ -32,7 +33,7 @@ const Weather: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center text-2xl gap-2">
+    <div className="w-full flex flex-col lg:flex-row justify-center items-center lg:justify-between text-2xl gap-2">
       <div className="flex flex-col text-center">
         <small>CONDITION ICON</small>
         <small>CONDITION TEXT</small>
@@ -40,7 +41,9 @@ const Weather: React.FC = () => {
           73<sup>&deg;</sup>
         </small>
       </div>
-      <div></div>
+      <div className="hidden lg:flex lg:flex-col">
+        <TodayDate />
+      </div>
     </div>
   );
 };

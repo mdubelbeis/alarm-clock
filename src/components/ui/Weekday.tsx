@@ -1,15 +1,6 @@
 import { useState, useEffect } from "react";
+import DaysList from "../Clock/DaysList";
 import TodayDate from "./TodayDate";
-
-const DAYS = [
-  { day: "mon", id: 1 },
-  { day: "tues", id: 2 },
-  { day: "wed", id: 3 },
-  { day: "thurs", id: 4 },
-  { day: "fri", id: 5 },
-  { day: "sat", id: 6 },
-  { day: "sun", id: 0 },
-];
 
 const Weekday: React.FC = () => {
   const [dayOfWeek, setDayOfWeek] = useState(new Date().getDay());
@@ -50,20 +41,7 @@ const Weekday: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center">
       <TodayDate />
-      <ul className="hidden lg:flex lg:gap-10">
-        {DAYS.map((weekday) => {
-          return (
-            <li
-              key={weekday.id}
-              className={`${
-                weekday.day === day ? "text-green-100" : "text-green-500"
-              } tracking-wider`}
-            >
-              {weekday.day}
-            </li>
-          );
-        })}
-      </ul>
+      <DaysList day={day} />
       <div className="lg:hidden">{day.toUpperCase()}</div>
     </div>
   );

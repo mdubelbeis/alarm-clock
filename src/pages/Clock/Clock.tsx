@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
 import ClockNav from "../../components/Clock/ClockNav";
 import Weather from "../../components/Clock/Weather";
 
 import Time from "../../components/ui/Time";
+import Weekday from "../../components/ui/Weekday";
 
 //TODO::
 /*
@@ -17,9 +17,11 @@ import Time from "../../components/ui/Time";
 
 const Clock: React.FC = () => {
   return (
-    <div className="flex flex-col justify-center items-center mt-10 gap-20">
+    <div className="relative bg-black text-green-500 drop-shadow-xl py-20">
       <ClockNav />
+      <Weather />
       <Time />
+      <Weekday />
     </div>
   );
 };
