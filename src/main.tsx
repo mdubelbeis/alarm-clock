@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
@@ -8,7 +8,6 @@ import Timer from "./pages/Clock/Timer";
 import StopWatch from "./pages/Clock/StopWatch";
 import Todo from "./pages/Todo";
 import Notes from "./pages/Notes";
-import HomeNav from "./components/Home/HomeNav";
 import HomePage from "./pages/HomePage";
 import Calculator from "./pages/Calculator";
 

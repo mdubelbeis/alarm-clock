@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import ClockNav from "../../components/Clock/ClockNav";
+import Weather from "../../components/Clock/Weather";
 
 import Time from "../../components/ui/Time";
 
@@ -18,6 +19,7 @@ const Clock: React.FC = () => {
   return (
     <div className="flex flex-col justify-center items-center mt-10 gap-20">
       <ClockNav />
+      <Weather />
       <Time />
     </div>
   );
