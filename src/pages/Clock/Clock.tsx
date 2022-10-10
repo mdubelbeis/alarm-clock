@@ -19,7 +19,6 @@ const Clock: React.FC = () => {
   return (
     <div className="flex flex-col justify-center items-center mt-10 gap-20">
       <ClockNav />
-      <Weather />
       <Time />
     </div>
   );

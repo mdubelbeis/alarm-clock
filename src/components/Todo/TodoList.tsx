@@ -1,4 +1,4 @@
-import TodoIcons from "./todoIcons";
+import TodoIcons from "./TodoIcons";
 
 interface TodoListProps {
   todos: { id: number; todo: string; isComplete: boolean }[];
