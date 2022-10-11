@@ -4,7 +4,7 @@ import Weather from "./Weather";
 
 const ClockTopWidgetBar: React.FC = () => {
   return (
-    <div className="flex flex-col w-full justify-center text-center lg:flex-row ">
+    <div className="flex flex-col w-full justify-center opacity-60 text-center lg:flex-row ">
       <ClockNav />
       <Weather />
     </div>

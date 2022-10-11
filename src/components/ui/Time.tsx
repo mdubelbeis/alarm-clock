@@ -16,7 +16,7 @@ const Time: React.FC = () => {
   return (
     <div className="relative w-full px-4">
       <p className="flex items-center justify-center drop-shadow-xl shadow-green-500 font-digital text-4xl md:text-7xl px-4 py-12 lg:px-10 lg:text-8xl text-center w-full ">
-        <span className="shadow-lg">{output}</span>
+        <span className="shadow-lg opacity-60">{output}</span>
       </p>
     </div>
   );
