@@ -18,7 +18,7 @@ import Weekday from "../../components/ui/Weekday";
 
 const Clock: React.FC = () => {
   return (
-    <div className="bg-black opacity-90 text-green-500 drop-shadow-xl py-10">
+    <div className="bg-black py-10 opacity-90 text-green-500 drop-shadow-xl">
       <ClockTopWidgetBar />
       <Time />
       <Weekday />

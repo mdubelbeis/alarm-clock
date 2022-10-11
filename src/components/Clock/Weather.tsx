@@ -21,7 +21,7 @@ const Weather: React.FC = () => {
 
     try {
       const response = await fetch(
-        "https://weatherbit-v1-mashape.p.rapidapi.com/current?lon=38.5&lat=-78.5",
+        "https://weatherbit-v1-mashape.p.rapidapi.com/current?lon=30.3&lat=-97.7",
         options
       );
       const data = await response.json();
@@ -33,7 +33,7 @@ const Weather: React.FC = () => {
   };
 
   return (
-    <div className="text-2xl">
+    <div className="text-2xl lg:absolute lg:top-2 lg:left-4">
       <div className="flex flex-col text-center">
         <small>CONDITION ICON</small>
         <small>CONDITION TEXT</small>
