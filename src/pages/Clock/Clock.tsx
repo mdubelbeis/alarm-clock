@@ -1,4 +1,5 @@
 import ClockNav from "../../components/Clock/ClockNav";
+import ClockTopWidgetBar from "../../components/Clock/ClockTopWidgetBar";
 import Weather from "../../components/Clock/Weather";
 
 import Time from "../../components/ui/Time";
@@ -17,9 +18,8 @@ import Weekday from "../../components/ui/Weekday";
 
 const Clock: React.FC = () => {
   return (
-    <div className="relative bg-black text-green-500 drop-shadow-xl py-20">
-      <ClockNav />
-      <Weather />
+    <div className="bg-black opacity-90 text-green-500 drop-shadow-xl py-10">
+      <ClockTopWidgetBar />
       <Time />
       <Weekday />
     </div>

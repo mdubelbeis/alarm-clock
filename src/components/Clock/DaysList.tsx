@@ -22,7 +22,9 @@ const DaysList: React.FC<DaysListProps> = ({ day }) => {
           <li
             key={weekday.id}
             className={`${
-              weekday.day === day ? "text-green-100" : "text-green-500"
+              weekday.day === day
+                ? "text-green-900 uppercase"
+                : "text-green-500"
             } tracking-wider`}
           >
             {weekday.day}

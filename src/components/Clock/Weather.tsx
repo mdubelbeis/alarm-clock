@@ -33,7 +33,7 @@ const Weather: React.FC = () => {
   };
 
   return (
-    <div className="w-full flex flex-col lg:flex-row justify-center items-center lg:justify-between text-2xl gap-2">
+    <div className="text-2xl">
       <div className="flex flex-col text-center">
         <small>CONDITION ICON</small>
         <small>CONDITION TEXT</small>

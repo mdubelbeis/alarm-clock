@@ -39,7 +39,7 @@ const Weekday: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center gap-2 text-2xl">
       <TodayDate />
       <DaysList day={day} />
       <div className="lg:hidden">{day.toUpperCase()}</div>
