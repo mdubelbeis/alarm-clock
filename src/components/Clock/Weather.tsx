@@ -53,6 +53,12 @@ const WEATHER_ICONS = [
     code: 801,
   },
   {
+    dayUrl: "/assets/icons/c02d.png",
+    nightUrl: "/assets/icons/c02n.png",
+    name: "scattered clouds",
+    code: 802,
+  },
+  {
     dayUrl: "/assets/icons/c03d.png",
     nightUrl: "/assets/icons/c03n.png",
     name: "broken clouds",
@@ -235,49 +241,58 @@ const WEATHER_ICONS = [
 ];
 
 const Weather: React.FC = () => {
-  const [weatherData, setWeatherData] = useState<{
-    temp: string;
-    ["city_name"]: string;
-    ["weather.description"]: string;
-    ["state_code"]: string;
-  }>();
-  //? HOW TO GET THIS TO WORK WITH GEOLOCATION API()?
-  const [zipCode, setZipCode] = useState<string>("78641");
+  const [zipCode, setZipCode] = useState<string>("08731");
   const [geoLocation, setGeoLocation] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  // API DATA
+  const [weatherData, setWeatherData] = useState<{}>({});
+  const [temperature, setTemperature] = useState<string>("");
+  const [city, setCity] = useState<string>("");
+  const [state, setState] = useState<string>("");
+  const [weatherDescription, setWeatherDescription] = useState<string>("");
+  const [icon, setIcon] = useState<string>("");
 
   useEffect(() => {
-    // getWeatherData();
+    getWeatherData();
   }, []);
+
+  const getWeatherIcon = (code: number) => {
+    const filteredIcon = WEATHER_ICONS.filter((icon) => icon.code === code);
+    const { dayUrl } = filteredIcon[0];
+
+    setIcon(dayUrl);
+  };
 
   const getWeatherData = async () => {
     try {
       const response = await fetch(
-        `https://api.weatherbit.io/v2.0/current?&postal_code=${zipCode}&country=US&key=${
-          import.meta.env.VITE_REACT_API_KEY
-        }`
+        `https://api.weatherbit.io/v2.0/current?&postal_code=${zipCode}&country=US&key=???&units=I`
       );
       const data = await response.json();
       setWeatherData(data.data[0]);
-      // console.log(weatherData);
+      setTemperature(data.data[0].temp);
+      setCity(data.data[0].city_name);
+      setState(data.data[0].state_code);
+      setWeatherDescription(data.data[0].weather.description);
+      getWeatherIcon(data.data[0].weather.code);
     } catch (error) {
-      // getWeatherData(); //? Keep Trying to fetch if continues to fail?
-      console.log("ERROR: " + error);
+      setErrorMessage("ERROR: " + error);
     }
   };
 
   return (
     <div className="text-2xl lg:absolute lg:top-2 lg:left-4">
       <div className="flex flex-col text-center gap-4">
-        <div className="flex flex-col">
-          <small>CONDITION ICON</small>
-          <small className="text-sm">{weatherData!.weather.description}</small>
+        <div className="flex flex-col items-center">
+          <img src={icon} alt="weather icon" className="w-20 h-20" />
+          <small className="text-sm">{weatherDescription}</small>
         </div>
         <div className="flex flex-col">
           <small>
-            {weatherData!.city_name}, {weatherData!.weather.state_code}
+            {city}, {state}
           </small>
           <small>
-            {weatherData!.temp}
+            {temperature}
             <sup>&deg;</sup>
           </small>
         </div>
@@ -285,6 +300,11 @@ const Weather: React.FC = () => {
       <div className="hidden lg:flex lg:flex-col">
         <TodayDate />
       </div>
+      {errorMessage && (
+        <div>
+          <p>{errorMessage}</p>
+        </div>
+      )}
     </div>
   );
 };

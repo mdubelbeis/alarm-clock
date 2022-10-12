@@ -1,14 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ReactDOM from "react-dom/client";
-import App from "./App";
 import "./index.css";
 
+import App from "./App";
+import HomePage from "./pages/HomePage";
 import Clock from "./pages/Clock/Clock";
-import Timer from "./pages/Clock/Timer";
 import StopWatch from "./pages/Clock/StopWatch";
+import Timer from "./pages/Clock/Timer";
 import Todo from "./pages/Todo";
 import Notes from "./pages/Notes";
-import HomePage from "./pages/HomePage";
 import Calculator from "./pages/Calculator";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
