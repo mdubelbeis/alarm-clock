@@ -266,7 +266,7 @@ const Weather: React.FC = () => {
   const getWeatherData = async () => {
     try {
       const response = await fetch(
-        `https://api.weatherbit.io/v2.0/current?&postal_code=${zipCode}&country=US&key=???&units=I`
+        `https://api.weatherbit.io/v2.0/current?&postal_code=${zipCode}&country=US&key=&units=I`
       );
       const data = await response.json();
       setWeatherData(data.data[0]);

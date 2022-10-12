@@ -6,7 +6,7 @@ const App = () => {
   return (
     <div className="flex flex-col justify-between relative w-full max-w-6xl mx-auto">
       <Header />
-      <main className="mt-20">
+      <main>
         <Outlet />
       </main>
       <Footer />
