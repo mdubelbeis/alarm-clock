@@ -266,7 +266,7 @@ const Weather: React.FC = () => {
   const getWeatherData = async () => {
     try {
       const response = await fetch(
-        `https://api.weatherbit.io/v2.0/current?&postal_code=${zipCode}&country=US&key=&units=I`
+        `https://api.weatherbit.io/v2.0/current?&postal_code=${zipCode}&country=US&key=???&units=I`
       );
       const data = await response.json();
       setWeatherData(data.data[0]);
@@ -282,7 +282,7 @@ const Weather: React.FC = () => {
 
   return (
     <div className="text-2xl lg:absolute lg:top-2 lg:left-4">
-      <div className="flex flex-col text-center gap-4">
+      <div className="flex flex-col text-center gap-2">
         <div className="flex flex-col items-center">
           <img src={icon} alt="weather icon" className="w-20 h-20" />
           <small className="text-sm">{weatherDescription}</small>
