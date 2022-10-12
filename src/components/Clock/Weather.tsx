@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import TodayDate from "../ui/TodayDate";
 
 const WEATHER_ICONS = [
   //* MIST/FOG
@@ -241,9 +240,10 @@ const WEATHER_ICONS = [
 ];
 
 const Weather: React.FC = () => {
-  const [zipCode, setZipCode] = useState<string>("08731");
+  const [zipCode, setZipCode] = useState<string>("23511");
   const [geoLocation, setGeoLocation] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [isError, setIsError] = useState<boolean>(false);
   // API DATA
   const [weatherData, setWeatherData] = useState<{}>({});
   const [temperature, setTemperature] = useState<string>("");
@@ -277,6 +277,7 @@ const Weather: React.FC = () => {
       getWeatherIcon(data.data[0].weather.code);
     } catch (error) {
       setErrorMessage("ERROR: " + error);
+      setIsError(true);
     }
   };
 
