@@ -297,14 +297,6 @@ const Weather: React.FC = () => {
           </small>
         </div>
       </div>
-      <div className="hidden lg:flex lg:flex-col">
-        <TodayDate />
-      </div>
-      {errorMessage && (
-        <div>
-          <p>{errorMessage}</p>
-        </div>
-      )}
     </div>
   );
 };
