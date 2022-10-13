@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import TodoList from "../components/Todo/TodoList";
-import InputForm from "../components/ui/InputForm";
+import InputForm from "../components/Todo/InputForm";
 
 const TODOS = [
   { id: Math.random(), todo: "Meta Certificate", isComplete: false },

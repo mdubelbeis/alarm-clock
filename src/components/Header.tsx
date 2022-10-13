@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import MobileNav from "../Home/HomeNav";
-import Icons from "./Icons";
+import MobileNav from "./MobileNav";
+import Icons from "./ui/Icons";
 
 const Header: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);

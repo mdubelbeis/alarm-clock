@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Icons from "../../components/ui/Icons";
-import Time from "../../components/ui/Time";
+import Time from "../../components/Clock/Time";
 
 const StopWatch: React.FC = () => {
   return (

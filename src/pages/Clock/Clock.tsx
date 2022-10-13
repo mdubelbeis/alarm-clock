@@ -1,7 +1,7 @@
 import ClockTopWidgetBar from "../../components/Clock/ClockTopWidgetBar";
 
-import Time from "../../components/ui/Time";
-import Weekday from "../../components/ui/Weekday";
+import Time from "../../components/Clock/Time";
+import Weekday from "../../components/Clock/Weekday";
 
 //TODO::
 /*

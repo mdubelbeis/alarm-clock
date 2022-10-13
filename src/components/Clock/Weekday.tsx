@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import DaysList from "../Clock/DaysList";
+import DaysList from "./DaysList";
 import TodayDate from "./TodayDate";
 
 const Weekday: React.FC = () => {

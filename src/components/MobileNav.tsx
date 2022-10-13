@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Icons from "../ui/Icons";
+import Icons from "./ui/Icons";
 
 const ICON_DIMENSION = [
   {
@@ -56,9 +56,9 @@ const MobileNav: React.FC<MobileNavProps> = ({ onClick }) => {
             >
               <Link
                 to={icon.url}
-                className="flex active:text-blue-700 hover:text-blue-500"
+                className="flex items-center gap-2 active:text-blue-700 hover:text-blue-500"
               >
-                <sub className="text-sm">{icon.name}</sub>
+                <p className="text-sm">{icon.name}</p>
                 <Icons d={icon.d} width="w-20 lg:w-6" id={icon.name} />
               </Link>
             </li>
