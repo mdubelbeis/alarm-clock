@@ -36,12 +36,10 @@ const Todo: React.FC = () => {
       setTodos(filteredTodos);
     }, 2000);
 
-    // Strikethrough Text
-    // Flash good job!
-    // Remove todo
+    // Flash good job Before removing! Logic in TodoList
   };
 
-  const deleteTodo = (todo: string) => {
+  const handleDeleteTodo = (todo: string) => {
     const filteredTodos = todos.filter((task) => task.todo !== todo);
     setTimeout(() => {
       setTodos(filteredTodos);
@@ -62,7 +60,7 @@ const Todo: React.FC = () => {
         <ul className="flex flex-col lg:grid md:grid-cols-2 gap-4">
           <TodoList
             todos={todos}
-            deleteTodo={deleteTodo}
+            deleteTodo={handleDeleteTodo}
             editTodo={editTodo}
             completeTodo={handleCompletedTodo}
           />
