@@ -240,10 +240,9 @@ const WEATHER_ICONS = [
 ];
 
 const Weather: React.FC = () => {
-  const [zipCode, setZipCode] = useState<string>("23511");
+  const [zipCode, setZipCode] = useState<string>("78641");
+  //* NEED TO SET GEOLOCATION OR ZIPCODE ENTRY
   const [geoLocation, setGeoLocation] = useState<string>("");
-  const [errorMessage, setErrorMessage] = useState<string>("");
-  const [isError, setIsError] = useState<boolean>(false);
   // API DATA
   const [weatherData, setWeatherData] = useState<{}>({});
   const [temperature, setTemperature] = useState<string>("");
@@ -276,8 +275,7 @@ const Weather: React.FC = () => {
       setWeatherDescription(data.data[0].weather.description);
       getWeatherIcon(data.data[0].weather.code);
     } catch (error) {
-      setErrorMessage("ERROR: " + error);
-      setIsError(true);
+      console.log("ERROR: " + error);
     }
   };
 
