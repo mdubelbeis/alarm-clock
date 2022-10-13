@@ -43,7 +43,9 @@ const Todo: React.FC = () => {
 
   const deleteTodo = (todo: string) => {
     const filteredTodos = todos.filter((task) => task.todo !== todo);
-    setTodos(filteredTodos);
+    setTimeout(() => {
+      setTodos(filteredTodos);
+    }, 2000);
   };
 
   const editTodo = () => {};
