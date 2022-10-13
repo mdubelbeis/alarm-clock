@@ -1,4 +1,4 @@
-import { useState, ReactFragment } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import HomeNav from "../Home/HomeNav";
 import Icons from "./Icons";
@@ -7,7 +7,7 @@ const Header: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <header className="w-full shadow-xl border-b-1 bg-slate-50 border-b-white xl:rounded-xl">
+    <header className="w-full p-4 md:p-8 shadow-xl border-b-1 bg-slate-50 border-b-white xl:rounded-xl">
       <div className="lg:hidden">
         {!showMenu && (
           <div className="flex justify-between items-center w-full p-4">

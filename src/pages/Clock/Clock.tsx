@@ -1,6 +1,4 @@
-import ClockNav from "../../components/Clock/ClockNav";
 import ClockTopWidgetBar from "../../components/Clock/ClockTopWidgetBar";
-import Weather from "../../components/Clock/Weather";
 
 import Time from "../../components/ui/Time";
 import Weekday from "../../components/ui/Weekday";
@@ -12,8 +10,8 @@ import Weekday from "../../components/ui/Weekday";
     * Snooze
     
   - Big Features:
-    * Synced Alarm for TODO/NOTES side of app?? (Redux? Context?)
-    * Set multiple alarms
+    * Synced Alarm for TODO/NOTES side of app?? (Redux)
+    * Set multiple alarms (Redux)
 */
 
 const Clock: React.FC = () => {
