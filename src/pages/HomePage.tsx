@@ -3,7 +3,7 @@ import React from "react";
 const HomePage: React.FC = () => {
   // ! USER LOGIN / AUTH
   return (
-    <section className="w-full p-10 shadow-lg bg-slate-50 flex flex-col gap-10">
+    <section className="mt-10 w-full p-10 shadow-lg bg-slate-50 flex flex-col gap-10">
       <div className="border-b-2 text-center border-slate-100 w-full max-w-xl mx-auto">
         <h1 className="text-2xl p-4">ABOUT</h1>
       </div>
