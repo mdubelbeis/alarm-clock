@@ -4,12 +4,14 @@ interface TodoListProps {
   todos: { id: number; todo: string; isComplete: boolean }[];
   deleteTodo: (todo: string) => void;
   editTodo: () => void;
+  completeTodo: (todo: string) => void;
 }
-const TodoList: React.FC<TodoListProps> = ({ todos, deleteTodo, editTodo }) => {
-  const handleCompleteTodo = () => {
-    console.log("Completed Todo");
-  };
-
+const TodoList: React.FC<TodoListProps> = ({
+  todos,
+  deleteTodo,
+  editTodo,
+  completeTodo,
+}) => {
   return (
     <>
       {todos.map((todo) => {
@@ -24,7 +26,7 @@ const TodoList: React.FC<TodoListProps> = ({ todos, deleteTodo, editTodo }) => {
                 <TodoIcons
                   todo={todo}
                   handleDeleteTodo={deleteTodo}
-                  handleCompleteTodo={handleCompleteTodo}
+                  handleCompleteTodo={completeTodo}
                   handleEditTodo={editTodo}
                 />
               </ul>

@@ -24,7 +24,7 @@ const ICONS = [
 interface TodoIconsProps {
   todo: { id: number; todo: string; isComplete: boolean };
   handleDeleteTodo: (todo: string) => void;
-  handleCompleteTodo: () => void;
+  handleCompleteTodo: (todo: string) => void;
   handleEditTodo: () => void;
 }
 
@@ -43,7 +43,7 @@ const TodoIcons: React.FC<TodoIconsProps> = ({
         handleEditTodo();
         break;
       case "completeIcon":
-        handleCompleteTodo();
+        handleCompleteTodo(todo.todo);
         break;
       default:
         console.log("idk what that is ");

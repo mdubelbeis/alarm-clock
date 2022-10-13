@@ -29,6 +29,18 @@ const Todo: React.FC = () => {
     return;
   };
 
+  const handleCompletedTodo = (name: string) => {
+    const filteredTodos = todos.filter((todo) => todo.todo !== name);
+    // Delay removal (setTimeout(() => {}, 2000)) on Click....
+    setTimeout(() => {
+      setTodos(filteredTodos);
+    }, 2000);
+
+    // Strikethrough Text
+    // Flash good job!
+    // Remove todo
+  };
+
   const deleteTodo = (todo: string) => {
     const filteredTodos = todos.filter((task) => task.todo !== todo);
     setTodos(filteredTodos);
@@ -46,7 +58,12 @@ const Todo: React.FC = () => {
       <InputForm handleNewTodo={handleNewTodo} />
       <div className="w-full">
         <ul className="flex flex-col lg:grid md:grid-cols-2 gap-4">
-          <TodoList todos={todos} deleteTodo={deleteTodo} editTodo={editTodo} />
+          <TodoList
+            todos={todos}
+            deleteTodo={deleteTodo}
+            editTodo={editTodo}
+            completeTodo={handleCompletedTodo}
+          />
         </ul>
       </div>
     </div>

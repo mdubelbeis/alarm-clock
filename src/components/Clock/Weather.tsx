@@ -252,7 +252,7 @@ const Weather: React.FC = () => {
   const [icon, setIcon] = useState<string>("");
 
   useEffect(() => {
-    getWeatherData();
+    // getWeatherData();
   }, []);
 
   const getWeatherIcon = (code: number) => {
