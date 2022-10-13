@@ -6,7 +6,6 @@ const HomePage: React.FC = () => {
   return (
     <div>
       <p>HomePAGE</p>
-
       <About />
     </div>
   );

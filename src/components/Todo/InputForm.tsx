@@ -1,11 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface InputFormProps {
   handleNewTodo: (newTodo: string) => void;
 }
 
 const InputForm: React.FC<InputFormProps> = ({ handleNewTodo }) => {
-  const [todo, setTodo] = useState("");
+  const [todo, setTodo] = useState<string>("");
+  const [windowSize, setWindowSize] = useState<number>(window.innerWidth);
+  const [maxLength, setMaxLength] = useState<number>(28);
+
+  useEffect(() => {
+    getWindowSize();
+  }, [windowSize]);
+
+  const getWindowSize = () => {
+    let width = window.innerWidth;
+    setWindowSize(width);
+
+    // Set maxLength attribute on input.
+    if (windowSize >= 768) {
+      setMaxLength(67);
+    }
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodo(e.target.value);
@@ -30,9 +46,10 @@ const InputForm: React.FC<InputFormProps> = ({ handleNewTodo }) => {
           placeholder="Add new task"
           value={todo}
           onChange={handleInputChange}
+          maxLength={maxLength}
         />
       </label>
-      <button className="md:absolute max-w-sm mx-auto py-2 px-6 md:py-2 md:px-6 md:top-[0.55rem] tracking-wider md:right-2 rounded-xl bg-blue-500 shadow-lg hover:bg-slate-50 hover:text-blue-500 text-white">
+      <button className="absolute max-w-sm mx-auto py-2 px-6 top-[0.55rem] tracking-wider right-2 rounded-xl bg-blue-500 shadow-lg hover:bg-blue-700 text-white">
         ADD
       </button>
     </form>
