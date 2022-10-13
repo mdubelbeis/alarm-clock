@@ -14,11 +14,14 @@ const Time: React.FC = () => {
   });
 
   return (
-    <div className="relative w-full px-4 py-10 md:py-20 lg:py-10 lg:mt-32">
-      <p className="flex items-center justify-center drop-shadow-xl shadow-green-500 font-digital text-5xl sm:text-6xl md:text-7xl px-4 lg:py-10 lg:text-9xl text-center w-full">
-        <span className="shadow-lg opacity-60">{output}</span>
-      </p>
-    </div>
+    <>
+      <div className="relative w-full px-4 py-10 md:py-20 lg:py-10 lg:mt-32">
+        <p className="flex items-center justify-center drop-shadow-xl shadow-green-500 font-digital text-4xl sm:text-6xl md:text-7xl px-4 lg:py-10 lg:text-9xl text-center w-full">
+          <span className="shadow-lg opacity-60">{output}</span>
+        </p>
+      </div>
+      <div></div>
+    </>
   );
 };
 

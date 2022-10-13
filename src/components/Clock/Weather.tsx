@@ -239,9 +239,13 @@ const WEATHER_ICONS = [
   },
 ];
 
-const Weather: React.FC = () => {
-  const [zipCode, setZipCode] = useState<string>("78641");
-  //* NEED TO SET GEOLOCATION OR ZIPCODE ENTRY
+interface WeatherProps {
+  zipCode: string;
+}
+
+const Weather: React.FC<WeatherProps> = ({ zipCode: zip }) => {
+  const [zipCode, setZipCode] = useState<string>(zip);
+  //*  NEED TO SET GEOLOCATION OR ZIPCODE ENTRY
   const [geoLocation, setGeoLocation] = useState<string>("");
   // API DATA
   const [weatherData, setWeatherData] = useState<{}>({});
@@ -258,14 +262,13 @@ const Weather: React.FC = () => {
   const getWeatherIcon = (code: number) => {
     const filteredIcon = WEATHER_ICONS.filter((icon) => icon.code === code);
     const { dayUrl } = filteredIcon[0];
-
     setIcon(dayUrl);
   };
 
   const getWeatherData = async () => {
     try {
       const response = await fetch(
-        `https://api.weatherbit.io/v2.0/current?&postal_code=${zipCode}&country=US&key=???&units=I`
+        `https://api.weatherbit.io/v2.0/current?&postal_code=${zipCode}&country=US&key=505ef68a61ca46fcba582a1e6e0daf3c&units=I`
       );
       const data = await response.json();
       setWeatherData(data.data[0]);
@@ -277,6 +280,10 @@ const Weather: React.FC = () => {
     } catch (error) {
       console.log("ERROR: " + error);
     }
+  };
+
+  const handleZipCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setZipCode(e.target.value);
   };
 
   return (
