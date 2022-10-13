@@ -25,11 +25,11 @@ const ICON_DIMENSION = [
   },
 ];
 
-interface HomeNavProps {
+interface MobileNavProps {
   onClick: (bool: boolean) => void;
 }
 
-const HomeNav: React.FC<HomeNavProps> = ({ onClick }) => {
+const MobileNav: React.FC<MobileNavProps> = ({ onClick }) => {
   return (
     <nav className="fixed z-50 top-0 left-0 bg-black text-white w-full h-screen grid place-content-center lg:flex lg:static lg:bg-white lg:text-black lg:w-auto lg:h-auto">
       <div
@@ -65,8 +65,22 @@ const HomeNav: React.FC<HomeNavProps> = ({ onClick }) => {
           );
         })}
       </ul>
+      <footer className="fixed bottom-0 left-0 py-4 flex flex-col justify-center items-center bg-black w-screen text-white">
+        <div>
+          <small>Designed and Developed by: </small>
+          <a
+            href="https://www.masondubelbeis.com"
+            className="text-blue-500 p-2"
+          >
+            Mason J. Dubelbeis
+          </a>
+        </div>
+        <div>
+          <small>&copy; 2022</small>
+        </div>
+      </footer>
     </nav>
   );
 };
 
-export default HomeNav;
+export default MobileNav;

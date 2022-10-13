@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import HomeNav from "../Home/HomeNav";
+import MobileNav from "../Home/HomeNav";
 import Icons from "./Icons";
 
 const Header: React.FC = () => {
@@ -28,17 +28,18 @@ const Header: React.FC = () => {
             </div>
           </div>
         )}
-        {showMenu && <HomeNav onClick={setShowMenu} />}
+        {showMenu && <MobileNav onClick={setShowMenu} />}
       </div>
       <div className="hidden lg:block mx-auto">
         <div className="flex justify-between items-center w-full p-4">
-          <div className="font-mono text-xl hover:text-blue-500 active:text-blue-700 tracking-wider">
+          <div className="font-mono text-xl md:text-4xl hover:text-blue-500 active:text-blue-700 tracking-wider">
             <Link to="/">
-              <span className="text-blue-500">MULTI</span>-TOOL
+              <span className="text-blue-500">MULTI</span>
+              <span>-TOOL</span>
             </Link>
           </div>
           <div>
-            <HomeNav onClick={() => {}} />
+            <MobileNav onClick={() => {}} />
           </div>
         </div>
       </div>

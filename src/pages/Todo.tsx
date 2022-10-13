@@ -53,7 +53,6 @@ const Todo: React.FC = () => {
 
   const handleEditTodo = (todo: string, id: number, isComplete: boolean) => {
     const filteredTodos = todos.filter((task) => task.id === id);
-    console.log(filteredTodos.id);
     // setEditCount((prevEditCount) => prevEditCount + 1);
     // console.log(editCount);
   };
