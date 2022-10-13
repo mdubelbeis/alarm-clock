@@ -46,7 +46,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ onClick }) => {
       >
         <Icons d="M6 18L18 6M6 6l12 12" id="closeMenuIcon" />
       </div>
-      <ul className="flex flex-col gap-20 lg:gap-10 lg:flex-row lg:bg-slate-50">
+      <ul className="flex flex-col gap-10 lg:flex-row lg:bg-slate-50">
         {ICON_DIMENSION.map((icon) => {
           return (
             <li
