@@ -16,7 +16,7 @@ const Todo: React.FC = () => {
   const [todos, setTodos] = useState(TODOS);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleNewTodo = (newTodo: string) => {
+  const handleNewTodo = (newTodo: string): void => {
     if (newTodo.length > 0) {
       setTodos([
         { id: Math.random(), todo: newTodo, isComplete: false },
@@ -29,24 +29,34 @@ const Todo: React.FC = () => {
     return;
   };
 
-  const handleCompletedTodo = (name: string) => {
+  const handleCompletedTodo = (
+    name: string,
+    id: number,
+    isComplete: boolean
+  ): void => {
     const filteredTodos = todos.filter((todo) => todo.todo !== name);
-    // Delay removal (setTimeout(() => {}, 2000)) on Click....
     setTimeout(() => {
       setTodos(filteredTodos);
-    }, 2000);
-
-    // Flash good job Before removing! Logic in TodoList
+    }, 500);
   };
 
-  const handleDeleteTodo = (todo: string) => {
+  const handleDeleteTodo = (
+    todo: string,
+    id: number,
+    isComplete: boolean
+  ): void => {
     const filteredTodos = todos.filter((task) => task.todo !== todo);
     setTimeout(() => {
       setTodos(filteredTodos);
-    }, 2000);
+    }, 500);
   };
 
-  const editTodo = () => {};
+  const handleEditTodo = (todo: string, id: number, isComplete: boolean) => {
+    const filteredTodos = todos.filter((task) => task.id === id);
+    console.log(filteredTodos.id);
+    // setEditCount((prevEditCount) => prevEditCount + 1);
+    // console.log(editCount);
+  };
 
   return (
     <div className="mt-10 relative py-20 px-10 max-w-6xl mx-auto flex flex-col gap-20 items-center lg:shadow-lg rounded-lg bg-slate-50">
@@ -61,7 +71,7 @@ const Todo: React.FC = () => {
           <TodoList
             todos={todos}
             deleteTodo={handleDeleteTodo}
-            editTodo={editTodo}
+            editTodo={handleEditTodo}
             completeTodo={handleCompletedTodo}
           />
         </ul>

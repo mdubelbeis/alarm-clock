@@ -3,10 +3,10 @@ import { useState } from "react";
 import TodoIcons from "./TodoIcons";
 
 interface TodoListProps {
-  todos: { id: number; todo: string; isComplete: boolean }[];
-  deleteTodo: (todo: string) => void;
-  editTodo: () => void;
-  completeTodo: (todo: string) => void;
+  todos: { todo: string; id: number; isComplete: boolean }[];
+  deleteTodo: (todo: string, id: number, isComplete: boolean) => void;
+  editTodo: (todo: string, id: number, isComplete: boolean) => void;
+  completeTodo: (todo: string, id: number, isComplete: boolean) => void;
 }
 const TodoList: React.FC<TodoListProps> = ({
   todos,
@@ -16,18 +16,30 @@ const TodoList: React.FC<TodoListProps> = ({
 }) => {
   const [todoName, setTodoName] = useState<string>("");
   const [deleteTodoName, setDeleteTodoName] = useState<string>("");
+  const [editTodoName, setEditTodoName] = useState<string>("");
 
-  const handleCompleteTodo = (todo: string) => {
+  const handleCompleteTodo = (
+    todo: string,
+    id: number,
+    isComplete: boolean
+  ) => {
     setTodoName(todo);
-    completeTodo(todo);
+    completeTodo(todo, id, isComplete);
     setDeleteTodoName("");
-    // STRIKETHROUGH COMPLETED TODO
   };
 
-  const handleDeleteTodo = (todo: string) => {
+  const handleDeleteTodo = (todo: string, id: number, isComplete: boolean) => {
     setDeleteTodoName(todo);
-    deleteTodo(todo);
+    deleteTodo(todo, id, isComplete);
     setTodoName("");
+  };
+
+  const handleEditTodo = (
+    todo: string,
+    id: number,
+    isComplete: boolean
+  ): void => {
+    setEditTodoName(todo);
   };
 
   return (
@@ -54,7 +66,7 @@ const TodoList: React.FC<TodoListProps> = ({
                   todo={todo}
                   handleDeleteTodo={handleDeleteTodo}
                   handleCompleteTodo={handleCompleteTodo}
-                  handleEditTodo={editTodo}
+                  handleEditTodo={handleEditTodo}
                 />
               </ul>
             </div>
