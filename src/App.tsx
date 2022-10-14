@@ -1,11 +1,10 @@
 import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import About from "./pages/About";
 
 const App = () => {
   return (
-    <div className="flex flex-col justify-between relative w-full max-w-6xl mx-auto">
+    <div className="flex flex-col justify-around relative w-full max-w-6xl mx-auto mb-20">
       <Header />
       <main>
         <Outlet />

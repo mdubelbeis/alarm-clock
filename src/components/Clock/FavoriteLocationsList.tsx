@@ -16,10 +16,10 @@ const FavoriteLocationsList: React.FC<FavoriteLocationsListProps> = ({
       {favoriteLocations.map((location) => {
         return (
           <li className="bg-blue-500 rounded-lg flex justify-between p-4">
-            <p>
+            <p className="text-white">
               {location.city}, {location.state}
             </p>
-            <p>{location.zipCode}</p>
+            <p className="text-white">{location.zipCode}</p>
           </li>
         );
       })}

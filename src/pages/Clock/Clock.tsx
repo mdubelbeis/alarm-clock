@@ -56,13 +56,21 @@ const LOCATIONS = [
   },
 ];
 
+const hourCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
 const Clock: React.FC = () => {
   const [newLocationZip, setNewLocationZip] = useState<string>("");
   const [locations, setLocations] = useState<{}[]>(LOCATIONS);
   const [favoriteLocations, setFavoriteLocations] = useState<{}[]>([]);
+  const [newAlarm, setNewAlarm] = useState<{}[]>([]);
+  const [isAm, setIsAm] = useState<string>("");
+  const [minutes, setMinutes] = useState<string[]>([]);
 
   useEffect(() => {
     filterFavoriteLocations();
+    if (!minutes) {
+      getMinutesOptions();
+    }
   }, [locations]);
 
   const filterFavoriteLocations = () => {
@@ -82,6 +90,35 @@ const Clock: React.FC = () => {
     setNewLocationZip(e.target.value);
   };
 
+  const handleNewAlarm = () => {};
+
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setIsAm(e.target.value);
+  };
+
+  const getMinutesOptions = () => {
+    let minutesArr: string[] = [];
+    for (let i = 0; i <= 59; i++) {
+      if (i < 9) {
+        minutesArr.push("0" + i);
+      } else if (i > 9) {
+        minutesArr.push("1" + i);
+      } else if (i > 19) {
+        minutesArr.push("2" + i);
+      } else if (i > 29) {
+        minutesArr.push("3" + i);
+      } else if (i > 39) {
+        minutesArr.push("4" + i);
+      } else if (i > 49) {
+        minutesArr.push("5" + i);
+      } else {
+        minutesArr.push("00");
+      }
+    }
+
+    setMinutes(minutesArr);
+  };
+
   return (
     <div className="flex flex-col items-center gap-16">
       <section className="mt-10 w-full bg-black py-10 opacity-90 text-green-500 drop-shadow-xl">
@@ -94,47 +131,76 @@ const Clock: React.FC = () => {
         id="clock-settings"
         className="flex flex-col gap-10 w-full bg-white text-slate-200 p-4 rounded-lg lg:p-8 lg:grid lg:grid-cols-2"
       >
-        <div className="col-span-1 flex flex-col p-10 bg-blue-500">
-          <h3 className="text-center text-4xl tracking-wider py-10 lg:m-10">
-            SET NEW ALARM
-          </h3>
-          <form></form>
-        </div>
+        <div className="col-span-1 flex flex-col p-4 bg-blue-500 rounded-xl text-black">
+          <div>
+            <h3 className="text-center text-4xl text-white tracking-wider py-8 lg:mt-6">
+              SET NEW ALARM
+            </h3>
+            <form
+              className="w-full flex justify-center gap-2"
+              onSubmit={handleNewAlarm}
+            >
+              <select name="hourCount" id="hourCount" className="w-fit">
+                {hourCount.map((hour) => {
+                  return <option value={hour}>{hour}</option>;
+                })}
+              </select>
 
+              <select name="minutesCount" id="minutesCount" className="w-fit">
+                {minutes.map((min) => {
+                  return <option value={min}>{min}</option>;
+                })}
+              </select>
+
+              <select
+                className="rounded-xl"
+                name=""
+                id=""
+                onChange={handleSelectChange}
+              >
+                <option value="A">AM</option>
+                <option value="P">PM</option>
+              </select>
+            </form>
+          </div>
+          <div></div>
+        </div>
         <div className="col-span-1 flex flex-col w-full p-4 bg-white border-[1px] border-blue-500 rounded-xl">
           <h3 className="text-center text-blue-500 text-4xl tracking-wider py-10 lg:m-10">
             SET NEW LOCATION
           </h3>
-          <form
-            className="bg-blue-500 flex flex-col items-center p-20 gap-6 w-full rounded-b-xl shadow-lg"
-            onSubmit={handleLocationSubmit}
-          >
-            <label>
-              <input
-                className="bg-white py-2 px-4 w-full rounded-xl text-blue-500"
-                type="number"
-                onChange={handleLocationChange}
-                value={newLocationZip}
-                placeholder="Enter Zip Code"
-                id="zipCode"
-              />
-            </label>
-            <button className="py-2 px-4 rounded-xl bg-white text-blue-500">
-              ENTER
-            </button>
-          </form>
+          <div className="justify-self-end">
+            <form
+              className="bg-blue-500 flex flex-col justify-between p-20 lg:py-32 gap-6 w-full rounded-b-xl shadow-lg"
+              onSubmit={handleLocationSubmit}
+            >
+              <label>
+                <input
+                  className="bg-white py-2 px-4 w-full rounded-xl text-blue-500"
+                  type="number"
+                  onChange={handleLocationChange}
+                  value={newLocationZip}
+                  placeholder="Enter Zip Code"
+                  id="zipCode"
+                />
+              </label>
+              <button className="py-2 px-4 rounded-xl bg-white text-blue-500">
+                ENTER
+              </button>
+            </form>
+          </div>
         </div>
-
+        s
         <div className="col-span-2 w-full grid grid-cols-1 lg:grid-cols-2 gap-10 bg-white">
-          <div className="flex flex-col p-10 bg-white border-[1px] border-blue-500">
+          <div className="flex flex-col p-10 bg-white border-[1px] border-blue-500 rounded-xl">
             <h3 className="text-center text-blue-500 text-4xl tracking-wider py-10 lg:py-0 lg:m-10">
               FAVORITE LOCATIONS
             </h3>
             <FavoriteLocationsList favoriteLocations={favoriteLocations} />
           </div>
 
-          <div className="col-span-1 flex flex-col p-10 bg-blue-500">
-            <h3 className="text-center text-4xl tracking-wider py-10 lg:m-10">
+          <div className="col-span-1 flex flex-col p-10 bg-blue-500 rounded-xl">
+            <h3 className="text-center text-4xl text-white tracking-wider py-10 lg:m-10">
               ACTIVE ALARMS
             </h3>
             <ActiveAlarmList activeAlarms={ACTIVE_ALARMS} />

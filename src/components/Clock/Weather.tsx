@@ -256,7 +256,7 @@ const Weather: React.FC<WeatherProps> = ({ zipCode: zip }) => {
   const [icon, setIcon] = useState<string>("");
 
   useEffect(() => {
-    // getWeatherData();
+    getWeatherData();
   }, []);
 
   const getWeatherIcon = (code: number) => {
