@@ -78,9 +78,7 @@ const Clock: React.FC = () => {
 
   useEffect(() => {
     filterFavoriteLocations();
-    if (!minutes) {
-      getMinutesOptions();
-    }
+    getMinutesOptions();
   }, [locations]);
 
   const filterFavoriteLocations = (): void => {
@@ -115,21 +113,25 @@ const Clock: React.FC = () => {
   const getMinutesOptions = () => {
     let minutesArr: string[] = [];
     for (let i = 0; i <= 59; i++) {
-      if (i < 9) {
-        minutesArr.push("0" + i);
-      } else if (i > 9) {
-        minutesArr.push("1" + i);
-      } else if (i > 19) {
-        minutesArr.push("2" + i);
-      } else if (i > 29) {
-        minutesArr.push("3" + i);
-      } else if (i > 39) {
-        minutesArr.push("4" + i);
-      } else if (i > 49) {
-        minutesArr.push("5" + i);
-      } else {
-        minutesArr.push("00");
+      if (i > 0) {
+        minutesArr.push(String(i));
       }
+
+      // if (i < 9) {
+      //   minutesArr.push(i);
+      // } else if (i > 9) {
+      //   minutesArr.push(i);
+      // } else if (i > 19) {
+      //   minutesArr.push("2" + i);
+      // } else if (i > 29) {
+      //   minutesArr.push("3" + i);
+      // } else if (i > 39) {
+      //   minutesArr.push("4" + i);
+      // } else if (i > 49) {
+      //   minutesArr.push("5" + i);
+      // } else {
+      //   minutesArr.push("00");
+      // }
     }
 
     setMinutes(minutesArr);
@@ -168,7 +170,11 @@ const Clock: React.FC = () => {
 
               <select name="minutesCount" id="minutesCount" className="w-fit">
                 {minutes.map((min) => {
-                  return <option value={min}>{min}</option>;
+                  return (
+                    <option key={min} value={min}>
+                      {min}
+                    </option>
+                  );
                 })}
               </select>
 
