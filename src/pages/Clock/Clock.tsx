@@ -56,12 +56,22 @@ const LOCATIONS = [
   },
 ];
 
+interface LocationData {
+  id: number;
+  zipCode: string;
+  city: string;
+  state: string;
+  isFavorite: boolean;
+}
+
 const hourCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 const Clock: React.FC = () => {
-  const [newLocationZip, setNewLocationZip] = useState<string>("");
+  const [newLocationZip, setNewLocationZip] = useState<string>("78641");
   const [locations, setLocations] = useState<{}[]>(LOCATIONS);
-  const [favoriteLocations, setFavoriteLocations] = useState<{}[]>([]);
+  const [favoriteLocations, setFavoriteLocations] = useState<LocationData[]>(
+    []
+  );
   const [newAlarm, setNewAlarm] = useState<{}[]>([]);
   const [isAm, setIsAm] = useState<string>("");
   const [minutes, setMinutes] = useState<string[]>([]);
@@ -73,26 +83,32 @@ const Clock: React.FC = () => {
     }
   }, [locations]);
 
-  const filterFavoriteLocations = () => {
-    const filteredLocations = locations.filter(
-      (location) => location.isFavorite
+  const filterFavoriteLocations = (): void => {
+    const filteredLocations = LOCATIONS.filter(
+      (location): boolean => location.isFavorite
     );
-
+    // console.log(filteredLocations);
     setFavoriteLocations(filteredLocations);
   };
 
-  const handleLocationSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
+  const handleLocationSubmit = (
+    e: React.ChangeEvent<HTMLFormElement>
+  ): void => {
     e.preventDefault();
     setNewLocationZip(e.target.zipCode.value);
   };
 
-  const handleLocationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleLocationChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setNewLocationZip(e.target.value);
   };
 
-  const handleNewAlarm = () => {};
+  const handleNewAlarm = (): void => {};
 
-  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleSelectChange = (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ): void => {
     setIsAm(e.target.value);
   };
 
@@ -122,7 +138,7 @@ const Clock: React.FC = () => {
   return (
     <div className="flex flex-col items-center gap-16">
       <section className="mt-10 w-full bg-black py-10 opacity-90 text-green-500 drop-shadow-xl">
-        <ClockTopWidgetBar zipCode={newLocationZip} />
+        <ClockTopWidgetBar zip={newLocationZip} />
         <Time />
         <Weekday />
       </section>
@@ -142,7 +158,11 @@ const Clock: React.FC = () => {
             >
               <select name="hourCount" id="hourCount" className="w-fit">
                 {hourCount.map((hour) => {
-                  return <option value={hour}>{hour}</option>;
+                  return (
+                    <option key={hour} value={hour}>
+                      {hour}
+                    </option>
+                  );
                 })}
               </select>
 

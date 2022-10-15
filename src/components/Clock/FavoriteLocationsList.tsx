@@ -15,7 +15,10 @@ const FavoriteLocationsList: React.FC<FavoriteLocationsListProps> = ({
     <ul>
       {favoriteLocations.map((location) => {
         return (
-          <li className="bg-blue-500 rounded-lg flex justify-between p-4">
+          <li
+            key={location.id}
+            className="bg-blue-500 rounded-lg flex justify-between p-4"
+          >
             <p className="text-white">
               {location.city}, {location.state}
             </p>
