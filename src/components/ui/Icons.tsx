@@ -2,7 +2,7 @@ interface IconProps {
   d: string;
   width?: string;
   id: string;
-  isFavorite?: string;
+  isFavorite?: boolean;
 }
 const Icons: React.FC<IconProps> = ({ d, width, id, isFavorite }) => {
   let textColor = "";
