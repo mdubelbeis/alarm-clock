@@ -244,11 +244,13 @@ interface WeatherProps {
 }
 
 const Weather: React.FC<WeatherProps> = ({ zip }) => {
-  const [zipCode, setZipCode] = useState<string>(zip);
-  //*  NEED TO SET GEOLOCATION OR ZIPCODE ENTRY
+  //*  NEED TO SET GEOLOCATION OR ZIP CODE ENTRY
   const [geoLocation, setGeoLocation] = useState<string>("");
   // API DATA
+  //* Find other data to use for display
   const [weatherData, setWeatherData] = useState<{}>({});
+
+  const [zipCode, setZipCode] = useState<string>("");
   const [temperature, setTemperature] = useState<string>("");
   const [city, setCity] = useState<string>("");
   const [state, setState] = useState<string>("");
@@ -256,9 +258,9 @@ const Weather: React.FC<WeatherProps> = ({ zip }) => {
   const [icon, setIcon] = useState<string>("");
 
   useEffect(() => {
-    getWeatherData(zip);
-    console.log(zip);
-  });
+    // setZipCode(zip);
+    // getWeatherData();
+  }, []);
 
   const getWeatherIcon = (code: number) => {
     const filteredIcon = WEATHER_ICONS.filter((icon) => icon.code === code);
@@ -266,10 +268,10 @@ const Weather: React.FC<WeatherProps> = ({ zip }) => {
     setIcon(dayUrl);
   };
 
-  const getWeatherData = async (zip: string) => {
+  const getWeatherData = async () => {
     try {
       const response = await fetch(
-        `https://api.weatherbit.io/v2.0/current?&postal_code=${zip}&country=US&key=???&units=I`
+        `https://api.weatherbit.io/v2.0/current?&postal_code=${zipCode}&country=US&key=505ef68a61ca46fcba582a1e6e0daf3c&units=I`
       );
       const data = await response.json();
       setWeatherData(data.data[0]);
@@ -297,6 +299,7 @@ const Weather: React.FC<WeatherProps> = ({ zip }) => {
           <small>
             {temperature}
             <sup>&deg;</sup>
+            <p>{zipCode}</p>
           </small>
         </div>
       </div>

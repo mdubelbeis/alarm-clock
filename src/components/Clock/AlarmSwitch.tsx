@@ -1,12 +1,17 @@
 import { useState } from "react";
 
-const Alarm: React.FC = () => {
+interface AlarmSwitchProps {
+  alarmPower: (mode: boolean) => void;
+}
+
+const AlarmSwitch: React.FC<AlarmSwitchProps> = ({ alarmPower }) => {
   const [alarmOn, setAlarmOn] = useState(false);
   let alarmOnStyle = alarmOn ? "bg-green-500 text-black" : "";
   let alarmOffStyle = !alarmOn ? "bg-black text-green-500" : "";
 
   const handleAlarmPower = () => {
     setAlarmOn(!alarmOn);
+    alarmPower(!alarmOn);
   };
 
   return (
@@ -19,4 +24,4 @@ const Alarm: React.FC = () => {
   );
 };
 
-export default Alarm;
+export default AlarmSwitch;
