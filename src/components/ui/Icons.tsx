@@ -12,8 +12,8 @@ const Icons: React.FC<IconProps> = ({ d, width, id, isFavorite }) => {
   } else if (id === "editIcon") {
     textColor = "text-orange-500";
   } else if (id === "heartIcon") {
-    textColor = `${`text-white hover:fill-red-500 active:fill-red-700 ${
-      isFavorite ? "fill-red-500" : ""
+    textColor = `${`text-white fill-white hover:fill-red-500 hover:text-red-500 active:fill-red-700 active:text-red-700 ${
+      isFavorite ? "fill-red-500 text-red-500" : ""
     }`}`;
   } else {
     textColor = "text-blue-500";
