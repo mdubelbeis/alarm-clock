@@ -12,7 +12,7 @@ const FavoriteLocationsList: React.FC<FavoriteLocationsListProps> = ({
   favoriteLocations,
 }) => {
   return (
-    <ul>
+    <ul className="flex flex-col gap-4">
       {favoriteLocations.map((location) => {
         return (
           <li

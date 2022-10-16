@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import ActiveAlarmList from "../../components/Clock/ActiveAlarmList";
 import ActiveAlarms from "../../components/Clock/ActiveAlarms";
 import ClockTopWidgetBar from "../../components/Clock/ClockTopWidgetBar";
-import FavoriteLocationsList from "../../components/Clock/FavoriteLocationsList";
+import FavoriteLocations from "../../components/Clock/FavoriteLocations";
 import SetNewAlarm from "../../components/Clock/SetNewAlarm";
 import SetNewLocation from "../../components/Clock/SetNewLocation";
 
@@ -51,9 +50,23 @@ const LOCATIONS = [
   },
   {
     id: Math.random(),
-    zipCode: "23511",
+    zipCode: "78641",
     city: "Leander",
     state: "TX",
+    isFavorite: true,
+  },
+  {
+    id: Math.random(),
+    zipCode: "08753",
+    city: "Forked Rived",
+    state: "NJ",
+    isFavorite: true,
+  },
+  {
+    id: Math.random(),
+    zipCode: "23511",
+    city: "Norfolk",
+    state: "VA",
     isFavorite: true,
   },
 ];
@@ -97,11 +110,12 @@ const Clock: React.FC = () => {
     getMinutesOptions();
   }, [locations, alarmPower]);
 
+  const handleAlarmNotice = () => {};
+
   const filterFavoriteLocations = (): void => {
     const filteredLocations = LOCATIONS.filter(
       (location): boolean => location.isFavorite
     );
-    // console.log(filteredLocations);
     setFavoriteLocations(filteredLocations);
   };
 
@@ -141,8 +155,9 @@ const Clock: React.FC = () => {
     const alarm = {
       id: Math.random(),
       name: `${alarmName}`,
-      time: `${hour}:${minutes}:00 ${amOrPm}`,
+      time: `${hour}:${minutes}:${seconds} ${amOrPm}`,
     };
+
     setAlarms((prevAlarm) => [alarm, ...prevAlarm]);
   };
 
@@ -199,13 +214,8 @@ const Clock: React.FC = () => {
           newLocationZip={newLocationZip}
         />
         <div className="col-span-2 w-full grid grid-cols-1 lg:grid-cols-2 gap-10 bg-white">
-          <ActiveAlarms />
-          <div className="flex flex-col p-10 bg-white border-[1px] border-blue-500 rounded-xl">
-            <h3 className="text-center text-blue-500 text-4xl tracking-wider py-10 lg:py-0 lg:m-10">
-              FAVORITE LOCATIONS
-            </h3>
-            <FavoriteLocationsList favoriteLocations={favoriteLocations} />
-          </div>
+          <ActiveAlarms activeAlarms={alarms} />
+          <FavoriteLocations favoriteLocations={favoriteLocations} />
         </div>
         {/* ALARM SECTION */}
       </section>

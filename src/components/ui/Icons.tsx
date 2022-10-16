@@ -2,14 +2,19 @@ interface IconProps {
   d: string;
   width?: string;
   id: string;
+  isFavorite?: string;
 }
-const Icons: React.FC<IconProps> = ({ d, width, id }) => {
+const Icons: React.FC<IconProps> = ({ d, width, id, isFavorite }) => {
   let textColor = "";
 
   if (id === "completeIcon" || id === "playPauseIcon") {
     textColor = "text-green-500";
   } else if (id === "editIcon") {
     textColor = "text-orange-500";
+  } else if (id === "heartIcon") {
+    textColor = `${`text-white hover:fill-red-500 active:fill-red-700 ${
+      isFavorite ? "fill-red-500" : ""
+    }`}`;
   } else {
     textColor = "text-blue-500";
   }
