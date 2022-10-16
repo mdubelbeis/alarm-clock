@@ -233,9 +233,16 @@ const Clock: React.FC = () => {
               </div>
 
               <div className="text-white tracking-wide">
-                <h2 className="text-4xl text-center p-4">
-                  What time do you want to set an alarm for?
-                </h2>
+                {alarmPower && (
+                  <h2 className="text-4xl text-center p-4">
+                    What time do you want to set an alarm for?
+                  </h2>
+                )}
+                {!alarmPower && (
+                  <h2 className="text-4xl text-center text-red-400 p-4">
+                    Turn on Alarm to set new alarm
+                  </h2>
+                )}
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex flex-col items-center gap-2">
