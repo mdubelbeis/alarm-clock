@@ -20,6 +20,12 @@ const SetNewLocation: React.FC<SetNewLocationProps> = ({
   };
 
   return (
+    //TODO:
+    //* Add Location zipCode to API req.
+    //* Add new location to LOCATIONS array
+    //* Maybe have a recentLocations array when submitted?
+    //* Output favoriteLocations array to user
+
     <div className="col-span-1 flex flex-col w-full p-4 bg-white border-[1px] border-blue-500 rounded-xl">
       <h3 className="text-center text-blue-500 text-4xl tracking-wider py-10 lg:m-10">
         SET NEW LOCATION

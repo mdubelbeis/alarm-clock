@@ -258,8 +258,8 @@ const Weather: React.FC<WeatherProps> = ({ zip }) => {
   const [icon, setIcon] = useState<string>("");
 
   useEffect(() => {
-    // setZipCode(zip);
-    // getWeatherData();
+    setZipCode(zip);
+    getWeatherData(zip);
   }, []);
 
   const getWeatherIcon = (code: number) => {
@@ -268,7 +268,7 @@ const Weather: React.FC<WeatherProps> = ({ zip }) => {
     setIcon(dayUrl);
   };
 
-  const getWeatherData = async () => {
+  const getWeatherData = async (zipCode: string) => {
     try {
       const response = await fetch(
         `https://api.weatherbit.io/v2.0/current?&postal_code=${zipCode}&country=US&key=???&units=I`

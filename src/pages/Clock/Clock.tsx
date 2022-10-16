@@ -71,6 +71,16 @@ const LOCATIONS = [
   },
 ];
 
+const RECENT_LOCATIONS = [
+  {
+    id: Math.random(),
+    zipCode: "78727",
+    city: "Austin",
+    state: "Tx",
+    isFavorite: false,
+  },
+];
+
 interface LocationData {
   id: number;
   zipCode: string;
@@ -82,7 +92,7 @@ interface LocationData {
 const hourCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 const Clock: React.FC = () => {
-  const [newLocationZip, setNewLocationZip] = useState<string>("78641");
+  const [newLocationZip, setNewLocationZip] = useState<string>("");
   const [locations, setLocations] = useState<{}[]>(LOCATIONS);
   const [favoriteLocations, setFavoriteLocations] = useState<LocationData[]>(
     []
@@ -90,9 +100,7 @@ const Clock: React.FC = () => {
 
   // ALARM
   const [alarmPower, setAlarmPower] = useState<boolean>(false);
-
   const [minutes, setMinutes] = useState<string[]>([]);
-
   const [alarms, setAlarms] = useState<
     {
       id: number;

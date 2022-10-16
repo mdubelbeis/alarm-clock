@@ -21,3 +21,7 @@ const ActiveAlarmList: React.FC<ActiveAlarmListProps> = ({ activeAlarms }) => {
 };
 
 export default ActiveAlarmList;
+
+//TODO:
+//* When <li> is clicked, how to delete/edit/rename alarm?
+//*
