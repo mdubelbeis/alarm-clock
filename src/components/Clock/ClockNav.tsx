@@ -10,7 +10,7 @@ const ClockNav: React.FC = () => {
     return (
       <li
         key={item.id}
-        className="py-4 px-6 bg-black border-[1px] border-opacity-40 border-green-500 shadow-lg tracking-wider hover:text-black hover:bg-green-500 hover:cursor-pointer"
+        className="py-4 px-6 bg-black rounded-lg border-[1px] border-opacity-40 border-green-500 shadow-lg tracking-wider hover:text-black hover:bg-green-500 hover:cursor-pointer"
       >
         <Link to={item.link}>{item.text}</Link>
       </li>
