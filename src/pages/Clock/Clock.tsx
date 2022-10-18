@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+
 import ActiveAlarms from "../../components/Clock/ActiveAlarms";
 import ClockTopWidgetBar from "../../components/Clock/ClockTopWidgetBar";
 import FavoriteLocations from "../../components/Clock/FavoriteLocations";
 import SetNewAlarm from "../../components/Clock/SetNewAlarm";
 import SetNewLocation from "../../components/Clock/SetNewLocation";
-
 import Time from "../../components/Clock/Time";
 import Weekday from "../../components/Clock/Weekday";
 
@@ -33,21 +33,7 @@ const RECENT_ALARMS = [
   { id: Math.random(), name: "Code Again", time: "12:00:00 P" },
 ];
 
-const LOCATIONS = [
-  {
-    id: Math.random(),
-    zipCode: "23511",
-    city: "Norfolk",
-    state: "VA",
-    isFavorite: false,
-  },
-  {
-    id: Math.random(),
-    zipCode: "08753",
-    city: "Tom's River",
-    state: "NJ",
-    isFavorite: false,
-  },
+const FAV_LOCATIONS = [
   {
     id: Math.random(),
     zipCode: "78641",
@@ -92,11 +78,8 @@ interface LocationData {
 const hourCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 const Clock: React.FC = () => {
-  const [newLocationZip, setNewLocationZip] = useState<string>("");
-  const [locations, setLocations] = useState<{}[]>(LOCATIONS);
-  const [favoriteLocations, setFavoriteLocations] = useState<LocationData[]>(
-    []
-  );
+  const [newLocationZip, setNewLocationZip] = useState<string>("78641");
+  const [favLocations, setFavLocations] = useState<{}[]>(FAV_LOCATIONS);
 
   // ALARM
   const [alarmPower, setAlarmPower] = useState<boolean>(false);
@@ -114,30 +97,15 @@ const Clock: React.FC = () => {
   const [alarmName, setAlarmName] = useState<string>("");
 
   useEffect(() => {
-    filterFavoriteLocations();
     getMinutesOptions();
-  }, [locations, alarmPower]);
+  }, [favLocations, alarmPower, newLocationZip]);
 
   const handleAlarmNotice = () => {};
 
-  const filterFavoriteLocations = (): void => {
-    const filteredLocations = LOCATIONS.filter(
-      (location): boolean => location.isFavorite
-    );
-    setFavoriteLocations(filteredLocations);
-  };
+  const handleAddFavLocation = () => {};
 
-  const handleLocationSubmit = (
-    e: React.ChangeEvent<HTMLFormElement>
-  ): void => {
-    e.preventDefault();
-    setNewLocationZip(e.target.zipCode.value);
-  };
-
-  const handleLocationChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    setNewLocationZip(e.target.value);
+  const handleLocationSubmit = (newZipCode: string) => {
+    setNewLocationZip(newZipCode);
   };
 
   const handleAmOrPmChange = (
@@ -216,14 +184,10 @@ const Clock: React.FC = () => {
           hourCount={hourCount}
           minutes={minutes}
         />
-        <SetNewLocation
-          handleLocationSubmit={handleLocationSubmit}
-          handleLocationChange={handleLocationChange}
-          newLocationZip={newLocationZip}
-        />
+        <SetNewLocation handleLocationSubmit={handleLocationSubmit} />
         <div className="col-span-2 w-full grid grid-cols-1 lg:grid-cols-2 gap-10 bg-white">
           <ActiveAlarms activeAlarms={alarms} />
-          <FavoriteLocations favoriteLocations={favoriteLocations} />
+          <FavoriteLocations favoriteLocations={FAV_LOCATIONS} />
         </div>
         {/* ALARM SECTION */}
       </section>

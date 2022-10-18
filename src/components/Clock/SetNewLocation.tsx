@@ -3,20 +3,22 @@ import { useState } from "react";
 import Icons from "../ui/Icons";
 
 interface SetNewLocationProps {
-  handleLocationSubmit: (e: React.ChangeEvent<HTMLFormElement>) => void;
-  handleLocationChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  newLocationZip: string;
+  handleLocationSubmit: (newZipCode: string) => void;
 }
 
 const SetNewLocation: React.FC<SetNewLocationProps> = ({
   handleLocationSubmit,
-  handleLocationChange,
-  newLocationZip,
 }) => {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
+  const [zipCode, setZipCode] = useState<string>("");
 
   const handleHeartClick = () => {
     setIsFavorite(!isFavorite);
+  };
+
+  const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    handleLocationSubmit(zipCode);
   };
 
   return (
@@ -33,15 +35,15 @@ const SetNewLocation: React.FC<SetNewLocationProps> = ({
       <div className="justify-self-end">
         <form
           className="bg-blue-500 flex flex-col justify-between p-20 lg:py-32 gap-6 w-full rounded-b-xl shadow-lg"
-          onSubmit={handleLocationSubmit}
+          onSubmit={handleSubmit}
         >
           <div className="flex gap-2 w-full justify-center">
             <label>
               <input
                 className="bg-white py-2 px-4 w-full rounded-xl text-blue-500"
                 type="number"
-                onChange={handleLocationChange}
-                value={newLocationZip}
+                onChange={(e) => setZipCode(e.target.value)}
+                value={zipCode}
                 placeholder="Enter Zip Code"
                 id="zipCode"
               />
@@ -55,7 +57,10 @@ const SetNewLocation: React.FC<SetNewLocationProps> = ({
             </div>
           </div>
 
-          <button className="py-2 px-4 rounded-xl bg-white text-blue-500">
+          <button
+            type="submit"
+            className="py-2 px-4 rounded-xl bg-white text-blue-500"
+          >
             ENTER
           </button>
         </form>

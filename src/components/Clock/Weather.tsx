@@ -259,7 +259,7 @@ const Weather: React.FC<WeatherProps> = ({ zip }) => {
 
   useEffect(() => {
     setZipCode(zip);
-    getWeatherData(zip);
+    getWeatherData(zipCode);
   }, []);
 
   const getWeatherIcon = (code: number) => {
