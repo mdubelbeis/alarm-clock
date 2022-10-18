@@ -3,16 +3,17 @@ import CalcInput from "../components/Calculator/CalcInput";
 
 const Calculator: React.FC = () => {
   const [calcOutput, setCalcOutput] = useState("0");
+
   return (
-    <div className="bg-slate-50 grid mt-10 lg:p-12 rounded-xl shadow-xl">
+    <div className="bg-slate-50 grid mt-16 lg:mt-8 lg:p-12 rounded-xl shadow-xl p-4">
       <div
         id="calc-wrapper"
-        className="bg-black w-full max-w-2xl flex flex-col items-center mx-auto text-center p-4"
+        className="bg-slate-800 w-full max-w-2xl flex flex-col items-center mx-auto rounded-xl text-center p-4"
       >
-        <h2 className="text-white text-right w-full lg:px-10 text-6xl py-20 bg-black">
+        <h2 className="text-white text-right w-full lg:px-10 text-6xl py-20 bg-black rounded-lg pr-4">
           {calcOutput}
         </h2>
-        <CalcInput />
+        <CalcInput setCalcOutput={setCalcOutput} />
       </div>
     </div>
   );
