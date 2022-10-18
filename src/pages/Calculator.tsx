@@ -1,7 +1,16 @@
-import React from "react";
+import { useState } from "react";
+import CalcInput from "../components/Calculator/CalcInput";
 
 const Calculator: React.FC = () => {
-  return <div className="text-center">Calculator is UNDER CONSTRUCTION</div>;
+  const [calcOutput, setCalcOutput] = useState("0");
+  return (
+    <div className="text-center">
+      <div id="calc-wrapper">
+        <h2>{calcOutput}</h2>
+        <CalcInput />
+      </div>
+    </div>
+  );
 };
 
 export default Calculator;
