@@ -6,6 +6,10 @@ module.exports = {
       fontFamily: {
         digital: ["digital", "sans-serif"],
       },
+      colors: {
+        "dull-orange": "#ffa346",
+        "dull-yellow": "#ffd146",
+      },
     },
   },
   plugins: [],

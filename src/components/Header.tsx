@@ -7,7 +7,7 @@ const Header: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <header className="w-full p-4 md:p-8 shadow-xl border-b-1 bg-slate-50 border-b-white xl:rounded-xl">
+    <header className="w-full p-2 lg:p-4 shadow-xl border-b-1 bg-slate-50 border-b-white xl:rounded-xl">
       <div className="lg:hidden">
         {!showMenu && (
           <div className="flex justify-between items-center w-full p-4">

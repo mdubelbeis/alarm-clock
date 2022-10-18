@@ -4,13 +4,15 @@ import Header from "./components/Header";
 
 const App = () => {
   return (
-    <div className="flex flex-col justify-around relative w-full max-w-6xl mx-auto mb-20">
-      <Header />
-      <main>
-        <Outlet />
-      </main>
+    <>
+      <div className="flex flex-col relative w-full max-w-6xl mx-auto mb-20">
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

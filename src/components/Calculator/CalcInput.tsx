@@ -1,33 +1,42 @@
+import { useState } from "react";
+
 const CalcInput: React.FC = () => {
+  const [trStyles, setTrStyles] = useState(
+    "grid grid-cols-4 grid-rows-1 gap-2"
+  );
+  const [tdStyles, setTdStyles] = useState(
+    "place-items-center py-2 px-4 font-lg bg-slate-500"
+  );
+
   return (
-    <table>
-      <tr>
-        <td>AC</td>
-        <td>/</td>
-        <td>X</td>
-        <td>%</td>
+    <table className="w-full grid gap-2">
+      <tr className={`${trStyles}`}>
+        <td className={`${tdStyles} bg-dull-orange`}>C</td>;
+        <td className={`${tdStyles} bg-dull-orange`}>/</td>
+        <td className={`${tdStyles} bg-dull-orange`}>X</td>
+        <td className={`${tdStyles} bg-dull-orange`}>%</td>
       </tr>
-      <tr>
-        <td>7</td>
-        <td>8</td>
-        <td>9</td>
-        <td>+</td>
+      <tr className={`${trStyles}`}>
+        <td className={`${tdStyles}`}>7</td>
+        <td className={`${tdStyles}`}>8</td>
+        <td className={`${tdStyles}`}>9</td>
+        <td className={`${tdStyles} bg-dull-orange`}>+</td>
       </tr>
-      <tr>
-        <td>4</td>
-        <td>5</td>
-        <td>6</td>
-        <td>-</td>
+      <tr className={`${trStyles}`}>
+        <td className={`${tdStyles}`}>4</td>
+        <td className={`${tdStyles}`}>5</td>
+        <td className={`${tdStyles}`}>6</td>
+        <td className={`${tdStyles} bg-dull-orange`}>-</td>
       </tr>
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>=</td>
+      <tr className={`${trStyles}`}>
+        <td className={`${tdStyles}`}>1</td>
+        <td className={`${tdStyles}`}>2</td>
+        <td className={`${tdStyles}`}>3</td>
+        <td className={`${tdStyles} bg-dull-orange`}>=</td>
       </tr>
-      <tr>
-        <td>0</td>
-        <td>.</td>
+      <tr className={`${trStyles}`}>
+        <td className={`${tdStyles}`}>0</td>
+        <td className={`${tdStyles} bg-dull-orange`}>.</td>
       </tr>
     </table>
   );
