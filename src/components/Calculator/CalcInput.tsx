@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, SetStateAction, Dispatch, useEffect } from "react";
 
 interface CalcInputProps {
-  setCalcOutput: (value: string) => void;
+  handleCalcOutput: (value: string) => void;
 }
 
-const CalcInput: React.FC<CalcInputProps> = ({ setCalcOutput }) => {
+const CalcInput: React.FC<CalcInputProps> = ({ handleCalcOutput }) => {
+  const [inputValue, setInputValue] = useState("");
+  const [isSpecialCharacter, setIsSpecialCharacter] = useState(false);
   const [trStyles, setTrStyles] = useState(
     "grid grid-cols-4 grid-rows-1 gap-2"
   );
@@ -15,8 +17,49 @@ const CalcInput: React.FC<CalcInputProps> = ({ setCalcOutput }) => {
     "bg-dull-orange hover:bg-orange-400"
   );
 
+  useEffect(() => {
+    if ()
+    handleCalcOutput(inputValue);
+  }, [inputValue])
+
+  const handleOutput = () => {
+
+  };
+
   const handleInputClick = (value: string) => {
-    setCalcOutput(value);
+    setInputValue(value);
+    switch (value) {
+      case "AC":
+        setInputValue("0");
+        handleCalcOutput(inputValue);
+        break;
+      case "/":
+        // something
+        break;
+      case "X":
+        // something
+        break;
+      case "%":
+        // something
+        break;
+      case "+":
+        //something
+        break;
+      case "-":
+        // something
+        break;
+      case "=":
+        // something
+        break;
+      case "md":
+        // something
+        break;
+      case ".":
+        // something
+        break;
+    }
+
+    
   };
 
   return (
