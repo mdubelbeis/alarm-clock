@@ -18,7 +18,7 @@ const Calculator: React.FC = () => {
         <h2 className="text-white text-right w-full lg:px-10 text-6xl py-12 lg:py-16 bg-slate-900 rounded-lg pr-4">
           {calcOutput}
         </h2>
-        <CalcInput setCalcOutput={handleCalcOutput} />
+        <CalcInput handleCalcOutput={handleCalcOutput} />
       </div>
     </div>
   );

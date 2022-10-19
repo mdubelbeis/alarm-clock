@@ -18,20 +18,23 @@ const CalcInput: React.FC<CalcInputProps> = ({ handleCalcOutput }) => {
   );
 
   useEffect(() => {
-    if ()
     handleCalcOutput(inputValue);
-  }, [inputValue])
-
-  const handleOutput = () => {
-
-  };
+  }, [inputValue]);
 
   const handleInputClick = (value: string) => {
     setInputValue(value);
+
+    if (inputValue.length > 0) {
+      setInputValue((prevState) => (prevState += value));
+    } else if (isSpecialCharacter) {
+      setInputValue(value);
+    } else {
+      setInputValue(value);
+    }
+
     switch (value) {
       case "AC":
-        setInputValue("0");
-        handleCalcOutput(inputValue);
+        clearCalculator();
         break;
       case "/":
         // something
@@ -57,9 +60,13 @@ const CalcInput: React.FC<CalcInputProps> = ({ handleCalcOutput }) => {
       case ".":
         // something
         break;
+      default:
+        setIsSpecialCharacter(false);
     }
+  };
 
-    
+  const clearCalculator = () => {
+    setInputValue("0");
   };
 
   return (
