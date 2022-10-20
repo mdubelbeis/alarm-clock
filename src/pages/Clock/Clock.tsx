@@ -95,9 +95,11 @@ const Clock: React.FC = () => {
   const [alarmMinutes, setAlarmMinutes] = useState<string>("");
   const [amOrPm, setAmOrPm] = useState<string>("");
   const [alarmName, setAlarmName] = useState<string>("");
+  const [clockPower, setClockPower] = useState<boolean>(false);
 
   useEffect(() => {
     getMinutesOptions();
+    setClockPower(true);
   }, [favLocations, alarmPower, newLocationZip]);
 
   const handleAlarmNotice = () => {};
