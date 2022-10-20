@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { RootState } from "../../app/store";
 import { todoActions } from "../../app/Todo/TodoSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { convertRoutesToDataRoutes } from "@remix-run/router/dist/utils";
 
 interface AddNewTodoProps {
   handleErrorMessage: (message: string) => void;
@@ -13,7 +12,7 @@ const AddNewTodo: React.FC<AddNewTodoProps> = ({ handleErrorMessage }) => {
   const [windowSize, setWindowSize] = useState<number>(window.innerWidth);
   const [maxLength, setMaxLength] = useState<number>(28);
   const [errorMessage, setErrorMessage] = useState<string>("");
-  const [submitError, setSubmitError] = useState<string>("");
+  // const [submitError, setSubmitError] = useState<string>("");
   const [disableBtn, setDisableBtn] = useState<boolean>(false);
   const dispatch = useDispatch();
   const todos = useSelector((state: RootState) => state.todoStore.todoList);
