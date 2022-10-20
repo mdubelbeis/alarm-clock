@@ -1,17 +1,22 @@
 import { useState, useEffect } from "react";
+import { RootState } from "../../app/store";
 import { todoActions } from "../../app/Todo/TodoSlice";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { convertRoutesToDataRoutes } from "@remix-run/router/dist/utils";
 
-interface InputFormProps {
+interface AddNewTodoProps {
   handleErrorMessage: (message: string) => void;
 }
 
-const InputForm: React.FC<InputFormProps> = ({ handleErrorMessage }) => {
+const AddNewTodo: React.FC<AddNewTodoProps> = ({ handleErrorMessage }) => {
   const [todoText, setTodoText] = useState<string>("");
   const [windowSize, setWindowSize] = useState<number>(window.innerWidth);
   const [maxLength, setMaxLength] = useState<number>(28);
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [submitError, setSubmitError] = useState<string>("");
+  const [disableBtn, setDisableBtn] = useState<boolean>(false);
   const dispatch = useDispatch();
+  const todos = useSelector((state: RootState) => state.todoStore.todoList);
 
   useEffect(() => {
     getWindowSize();
@@ -36,12 +41,17 @@ const InputForm: React.FC<InputFormProps> = ({ handleErrorMessage }) => {
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (todoText.length > 0) {
+    const filterTodoNames = todos.filter(
+      (todo) => todo.todo.toLowerCase() === todoText.toLowerCase()
+    );
+
+    if (filterTodoNames.length === 0 && todoText.length > 0) {
       dispatch(todoActions.addTodo(todoText));
       setErrorMessage("");
     } else {
-      setErrorMessage("A Todo must have at least one character...");
-      console.log("Error");
+      todoText.length <= 0
+        ? setErrorMessage("A Todo must have more than one letter...")
+        : setErrorMessage("That Todo is already in your Todo list...");
     }
 
     handleErrorMessage(errorMessage);
@@ -64,11 +74,14 @@ const InputForm: React.FC<InputFormProps> = ({ handleErrorMessage }) => {
           maxLength={maxLength}
         />
       </label>
-      <button className="absolute max-w-sm mx-auto py-2 px-6 top-[0.55rem] tracking-wider right-2 rounded-xl bg-blue-500 shadow-lg hover:bg-blue-700 text-white">
+      <button
+        disabled={disableBtn}
+        className="absolute max-w-sm mx-auto py-2 px-6 top-[0.55rem] tracking-wider right-2 rounded-xl bg-blue-500 shadow-lg hover:bg-blue-700 text-white"
+      >
         ADD
       </button>
     </form>
   );
 };
 
-export default InputForm;
+export default AddNewTodo;

@@ -20,11 +20,17 @@ export const todoSlice = createSlice({
   name: "todo",
   initialState,
   reducers: {
-    addTodo: (state, payload) => {
+    addTodo: (state, action) => {
       state.todoList = [
-        { id: Math.random(), todo: payload.payload, isComplete: false },
+        { id: Math.random(), todo: action.payload, isComplete: false },
         ...state.todoList,
       ];
+    },
+    completeTodo: (
+      state,
+      action: PayloadAction<{ id: number; todo: string; isComplete: boolean }[]>
+    ) => {
+      state.todoList = action.payload;
     },
     deleteTodo: (
       state,

@@ -19,7 +19,7 @@ const TodoList: React.FC = () => {
   ) => {
     const filteredTodos = todos.filter((todo) => todo.todo !== name);
     setTimeout(() => {
-      dispatch(todoActions.deleteTodo(filteredTodos));
+      dispatch(todoActions.completeTodo(filteredTodos));
     }, 500);
     setTodoName(name);
     setDeleteTodoName("");
