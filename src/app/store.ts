@@ -5,7 +5,7 @@ import logTodoReducer from "../app/Todo/TodoSlice";
 
 export const store = configureStore({
   reducer: {
-    todoActions: todoReducers,
+    todoStore: todoReducers,
   },
 });
 

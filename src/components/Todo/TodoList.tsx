@@ -1,36 +1,36 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../app/store";
+import { todoActions } from "../../app/Todo/TodoSlice";
 
 import TodoIcons from "./TodoIcons";
 
-interface TodoListProps {
-  todos: { todo: string; id: number; isComplete: boolean }[];
-  deleteTodo: (todo: string, id: number, isComplete: boolean) => void;
-  editTodo: (todo: string, id: number, isComplete: boolean) => void;
-  completeTodo: (todo: string, id: number, isComplete: boolean) => void;
-}
-const TodoList: React.FC<TodoListProps> = ({
-  todos,
-  deleteTodo,
-  editTodo,
-  completeTodo,
-}) => {
+const TodoList: React.FC = () => {
   const [todoName, setTodoName] = useState<string>("");
   const [deleteTodoName, setDeleteTodoName] = useState<string>("");
   const [editTodoName, setEditTodoName] = useState<string>("");
+  const dispatch = useDispatch();
+  const todos = useSelector((state: RootState) => state.todoStore.todoList);
 
   const handleCompleteTodo = (
-    todo: string,
+    name: string,
     id: number,
     isComplete: boolean
   ) => {
-    setTodoName(todo);
-    completeTodo(todo, id, isComplete);
+    const filteredTodos = todos.filter((todo) => todo.todo !== name);
+    setTimeout(() => {
+      dispatch(todoActions.deleteTodo(filteredTodos));
+    }, 500);
+    setTodoName(name);
     setDeleteTodoName("");
   };
 
   const handleDeleteTodo = (todo: string, id: number, isComplete: boolean) => {
+    const filteredTodos = todos.filter((task) => task.todo !== todo);
+    setTimeout(() => {
+      dispatch(todoActions.deleteTodo(filteredTodos));
+    }, 500);
     setDeleteTodoName(todo);
-    deleteTodo(todo, id, isComplete);
     setTodoName("");
   };
 
