@@ -1,27 +1,27 @@
 import { useState } from "react";
+import type { RootState } from "../app/store";
+import { useSelector, useDispatch } from "react-redux";
+import { addTodo, deleteTodo, logTodo } from "../app/Todo/TodoSlice";
 
 import TodoList from "../components/Todo/TodoList";
 import InputForm from "../components/Todo/InputForm";
 
-const TODOS = [
-  { id: Math.random(), todo: "Meta Certificate", isComplete: false },
-  { id: Math.random(), todo: "Build Projects", isComplete: false },
-  { id: Math.random(), todo: "Apply for jobs", isComplete: false },
-  { id: Math.random(), todo: "Study", isComplete: false },
-];
-
 const Todo: React.FC = () => {
   // Passed Down edit info for some dynamic data for user to see on todo
   const [editCount, setEditCount] = useState(0);
-  const [todos, setTodos] = useState(TODOS);
+  // const [todos, setTodos] = useState(TODOS);
+  const todos = useSelector((state: RootState) => state.addTodo.todoList);
+  const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleNewTodo = (newTodo: string): void => {
     if (newTodo.length > 0) {
-      setTodos([
-        { id: Math.random(), todo: newTodo, isComplete: false },
-        ...todos,
-      ]);
+      dispatch(
+        addTodo([
+          { id: Math.random(), todo: newTodo, isComplete: false },
+          ...todos,
+        ])
+      );
       setErrorMessage("");
     } else {
       setErrorMessage("A Todo must have at least one character...");
@@ -36,7 +36,7 @@ const Todo: React.FC = () => {
   ): void => {
     const filteredTodos = todos.filter((todo) => todo.todo !== name);
     setTimeout(() => {
-      setTodos(filteredTodos);
+      dispatch(deleteTodo(filteredTodos));
     }, 500);
   };
 
@@ -47,7 +47,7 @@ const Todo: React.FC = () => {
   ): void => {
     const filteredTodos = todos.filter((task) => task.todo !== todo);
     setTimeout(() => {
-      setTodos(filteredTodos);
+      dispatch(deleteTodo(filteredTodos));
     }, 500);
   };
 
