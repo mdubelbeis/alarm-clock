@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { CaseReducer } from "@reduxjs/toolkit";
+import { CaseReducerWithPrepare } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface TodoState {
@@ -18,11 +20,11 @@ export const todoSlice = createSlice({
   name: "todo",
   initialState,
   reducers: {
-    addTodo: (
-      state,
-      action: PayloadAction<{ id: number; todo: string; isComplete: boolean }[]>
-    ) => {
-      state.todoList = action.payload;
+    addTodo: (state, payload) => {
+      state.todoList = [
+        { id: Math.random(), todo: payload.payload, isComplete: false },
+        ...state.todoList,
+      ];
     },
     deleteTodo: (
       state,
@@ -30,12 +32,12 @@ export const todoSlice = createSlice({
     ) => {
       state.todoList = action.payload;
     },
-    logTodo: (state) => {
-      console.log("Hello from todoSlice");
+    logTodo: (state: any) => {
+      console.log(state.todoList);
     },
   },
 });
 
-export const { addTodo, deleteTodo, logTodo } = todoSlice.actions;
+export const todoActions = todoSlice.actions;
 
 export default todoSlice.reducer;

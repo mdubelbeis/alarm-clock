@@ -1,13 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import addTodoReducer from "../app/Todo/TodoSlice";
+import todoReducers from "../app/Todo/TodoSlice";
 import deleteTodoReducer from "../app/Todo/TodoSlice";
 import logTodoReducer from "../app/Todo/TodoSlice";
 
 export const store = configureStore({
   reducer: {
-    addTodo: addTodoReducer,
-    deleteTodo: deleteTodoReducer,
-    logTodo: logTodoReducer,
+    todoActions: todoReducers,
   },
 });
 

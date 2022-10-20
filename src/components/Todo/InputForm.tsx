@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react";
+import { todoActions } from "../../app/Todo/TodoSlice";
+import { useDispatch } from "react-redux";
 
 interface InputFormProps {
-  handleNewTodo: (newTodo: string) => void;
+  handleErrorMessage: (message: string) => void;
 }
 
-const InputForm: React.FC<InputFormProps> = ({ handleNewTodo }) => {
-  const [todo, setTodo] = useState<string>("");
+const InputForm: React.FC<InputFormProps> = ({ handleErrorMessage }) => {
+  const [todoText, setTodoText] = useState<string>("");
   const [windowSize, setWindowSize] = useState<number>(window.innerWidth);
   const [maxLength, setMaxLength] = useState<number>(28);
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getWindowSize();
@@ -24,13 +28,24 @@ const InputForm: React.FC<InputFormProps> = ({ handleNewTodo }) => {
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTodo(e.target.value);
+    setTodoText(e.target.value);
   };
+
+  const handleNewTodo = (newTodo: string): void => {};
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleNewTodo(todo);
-    setTodo("");
+
+    if (todoText.length > 0) {
+      dispatch(todoActions.addTodo(todoText));
+      setErrorMessage("");
+    } else {
+      setErrorMessage("A Todo must have at least one character...");
+      console.log("Error");
+    }
+
+    handleErrorMessage(errorMessage);
+    setTodoText("");
   };
 
   return (
@@ -44,7 +59,7 @@ const InputForm: React.FC<InputFormProps> = ({ handleNewTodo }) => {
           type="text"
           autoFocus
           placeholder="Add new task"
-          value={todo}
+          value={todoText}
           onChange={handleInputChange}
           maxLength={maxLength}
         />
