@@ -95,11 +95,16 @@ const Clock: React.FC = () => {
   const [alarmMinutes, setAlarmMinutes] = useState<string>("");
   const [amOrPm, setAmOrPm] = useState<string>("");
   const [alarmName, setAlarmName] = useState<string>("");
+
+  // Clock Features / Settings
   const [clockPower, setClockPower] = useState<boolean>(false);
+  const [clockSound, setClockSound] = useState<string>(
+    "../../../public/assets/sounds/408741__straget__alarm-clock-ticking.wav"
+  );
 
   useEffect(() => {
-    getMinutesOptions();
     setClockPower(true);
+    getMinutesOptions();
   }, [favLocations, alarmPower, newLocationZip]);
 
   const handleAlarmNotice = () => {};
