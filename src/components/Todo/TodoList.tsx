@@ -53,7 +53,7 @@ const TodoList: React.FC = () => {
         return (
           <li
             key={todo.id}
-            className={`flex flex-col md:flex-row justify-between w-full mx-auto gap-6 bg-white m-2 items-center p-4 rounded-2xl shadow-lg py-4 hover:bg-slate-100`}
+            className={`flex flex-col md:flex-row justify-between w-full mx-auto gap-6 bg-white m-2 items-center p-4 rounded-2xl shadow-lg py-4 hover:bg-slate-50 `}
           >
             <h3
               className={`w-full text-xl lg:text-2xl tracking-wide ${complete} ${trash} truncate`}
