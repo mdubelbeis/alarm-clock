@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
 
 const Time: React.FC = () => {
-  let timeOutput = new Date().toLocaleTimeString();
+  let timeOutput = useSelector((state: RootState) => state.clockStore.time);
   let filteredOutput = timeOutput.replace("M", "");
   const [output, setOutput] = useState(filteredOutput);
 

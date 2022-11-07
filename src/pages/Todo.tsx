@@ -1,13 +1,9 @@
 import { useState } from "react";
-import type { RootState } from "../app/store";
-import { useSelector, useDispatch } from "react-redux";
 
 import TodoList from "../components/Todo/TodoList";
-import AddNewTodo from "../components/Todo/InputForm";
+import AddNewTodo from "../components/Todo/AddNewTodo";
 
 const Todo: React.FC = () => {
-  // Passed Down edit info for some dynamic data for user to see on todo
-  const [editCount, setEditCount] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleErrorMessage = (message: string): void => {

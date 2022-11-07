@@ -35,8 +35,6 @@ const AddNewTodo: React.FC<AddNewTodoProps> = ({ handleErrorMessage }) => {
     setTodoText(e.target.value);
   };
 
-  const handleNewTodo = (newTodo: string): void => {};
-
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
 
