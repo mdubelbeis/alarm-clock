@@ -5,7 +5,7 @@ import { RootState } from "../../app/store";
 const AlarmSwitch: React.FC = () => {
   const dispatch = useDispatch();
   const alarmState = useSelector(
-    (state: RootState) => state.clockStore.alarmPower
+    (state: RootState) => state.clockStore.alarmModule.alarmPower
   );
   let alarmOnStyle = alarmState ? "bg-green-500 text-black" : "";
   let alarmOffStyle = !alarmState ? "bg-black text-green-500" : "";

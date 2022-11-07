@@ -3,16 +3,22 @@ import { PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
 export interface ClockState {
-  time: string;
-  activeAlarms: { id: string; alarmName: string; alarmTime: string }[];
-  favoriteLocations: {
-    id: string;
-    state: string;
-    city: string;
-    zipCode: string;
-  }[];
-  alarmPower: boolean;
   clockPower: boolean;
+  time: string;
+  alarmModule: {
+    alarmPower: boolean;
+    activeAlarms: { id: string; alarmName: string; alarmTime: string }[];
+  };
+  weatherModule: {
+    currentZipCode: string;
+    favoriteLocations: { id: string; zipCode: string; isFavorite: boolean }[];
+  };
+}
+
+export interface FavoriteLocation {
+  id: string;
+  zipCode: string;
+  isFavorite: { id: string; zipCode: string; isFavorite: boolean }[];
 }
 
 export interface AlarmState {
@@ -22,10 +28,17 @@ export interface AlarmState {
 
 const initialState: ClockState = {
   time: new Date().toLocaleTimeString(),
-  activeAlarms: [],
-  favoriteLocations: [],
-  alarmPower: false,
   clockPower: true,
+
+  alarmModule: {
+    alarmPower: false,
+    activeAlarms: [],
+  },
+
+  weatherModule: {
+    currentZipCode: "78641",
+    favoriteLocations: [],
+  },
 };
 
 export const clockSlice = createSlice({
@@ -33,8 +46,8 @@ export const clockSlice = createSlice({
   initialState,
   reducers: {
     addNewAlarm(state, action: PayloadAction<AlarmState>) {
-      state.activeAlarms = [
-        ...state.activeAlarms,
+      state.alarmModule.activeAlarms = [
+        ...state.alarmModule.activeAlarms,
         {
           id: uuidv4(),
           alarmName: action.payload.alarmName,
@@ -42,24 +55,28 @@ export const clockSlice = createSlice({
         },
       ];
     },
-    removeAlarm(state, action: PayloadAction<string>) {
-      state.activeAlarms = state.activeAlarms.filter(
-        (alarm) => alarm.alarmName !== action.payload
-      );
-    },
+
+    // removeAlarm(state, action: PayloadAction<string>) {
+    //   state.alarmModule.activeAlarms = state.alarmModule.activeAlarms.filter(
+    //     (alarm) =>
+    //   );
+    // },
+
     addFavoriteLocation(state, action: PayloadAction<string>) {
-      state.favoriteLocations = [
-        ...state.favoriteLocations,
+      state.weatherModule.favoriteLocations = [
+        ...state.weatherModule.favoriteLocations,
         {
           id: uuidv4(),
-          state: action.payload,
-          city: action.payload,
           zipCode: action.payload,
+          isFavorite: true,
         },
       ];
     },
+    addNewLocation(state, action: PayloadAction<string>) {
+      state.weatherModule.currentZipCode = action.payload;
+    },
     setAlarmPower(state, action: PayloadAction<boolean>) {
-      state.alarmPower = action.payload;
+      state.alarmModule.alarmPower = action.payload;
     },
   },
 });

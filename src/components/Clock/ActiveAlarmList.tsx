@@ -3,7 +3,7 @@ import { RootState } from "../../app/store";
 
 const ActiveAlarmList: React.FC = () => {
   const activeAlarms = useSelector(
-    (state: RootState) => state.clockStore.activeAlarms
+    (state: RootState) => state.clockStore.alarmModule.activeAlarms
   );
   return (
     <ul className="grid grid-cols-2 gap-10">

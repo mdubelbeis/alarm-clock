@@ -1,14 +1,11 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { clockActions } from "../../app/Clock/ClockSlice";
 
 import Icons from "../ui/Icons";
 
-interface SetNewLocationProps {
-  handleLocationSubmit: (newZipCode: string) => void;
-}
-
-const SetNewLocation: React.FC<SetNewLocationProps> = ({
-  handleLocationSubmit,
-}) => {
+const SetNewLocation: React.FC = () => {
+  const dispatch = useDispatch();
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const [zipCode, setZipCode] = useState<string>("");
 
@@ -18,7 +15,8 @@ const SetNewLocation: React.FC<SetNewLocationProps> = ({
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleLocationSubmit(zipCode);
+
+    dispatch(clockActions.addNewLocation(e.currentTarget.zipCodeInput.value));
   };
 
   return (
@@ -42,10 +40,10 @@ const SetNewLocation: React.FC<SetNewLocationProps> = ({
               <input
                 className="bg-white py-2 px-4 w-full rounded-xl text-blue-500"
                 type="number"
+                id="zipCodeInput"
                 onChange={(e) => setZipCode(e.target.value)}
                 value={zipCode}
                 placeholder="Enter Zip Code"
-                id="zipCode"
               />
             </label>
             <div onClick={handleHeartClick}>

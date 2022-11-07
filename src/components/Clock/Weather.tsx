@@ -239,11 +239,7 @@ const WEATHER_ICONS = [
   },
 ];
 
-interface WeatherProps {
-  zip: string;
-}
-
-const Weather: React.FC<WeatherProps> = ({ zip }) => {
+const Weather: React.FC = () => {
   //*  NEED TO SET GEOLOCATION OR ZIP CODE ENTRY
   const [geoLocation, setGeoLocation] = useState<string>("");
   // API DATA
@@ -258,7 +254,7 @@ const Weather: React.FC<WeatherProps> = ({ zip }) => {
   const [icon, setIcon] = useState<string>("");
 
   useEffect(() => {
-    setZipCode(zip);
+    setZipCode("78641");
     // getWeatherData(zipCode);
   }, []);
 

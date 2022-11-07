@@ -10,7 +10,7 @@ const SetNewAlarm: React.FC = () => {
   let alarmName: string = "";
   let minutes: string[] = [];
   const alarmPower = useSelector(
-    (state: RootState) => state.clockStore.alarmPower
+    (state: RootState) => state.clockStore.alarmModule.alarmPower
   );
 
   const handleNewAlarmSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
