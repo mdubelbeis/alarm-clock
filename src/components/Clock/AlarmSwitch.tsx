@@ -1,17 +1,17 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { clockActions } from "../../app/Clock/ClockSlice";
+import { RootState } from "../../app/store";
 
-interface AlarmSwitchProps {
-  alarmPower: (mode: boolean) => void;
-}
-
-const AlarmSwitch: React.FC<AlarmSwitchProps> = ({ alarmPower }) => {
-  const [alarmOn, setAlarmOn] = useState(false);
-  let alarmOnStyle = alarmOn ? "bg-green-500 text-black" : "";
-  let alarmOffStyle = !alarmOn ? "bg-black text-green-500" : "";
+const AlarmSwitch: React.FC = () => {
+  const dispatch = useDispatch();
+  const alarmState = useSelector(
+    (state: RootState) => state.clockStore.alarmPower
+  );
+  let alarmOnStyle = alarmState ? "bg-green-500 text-black" : "";
+  let alarmOffStyle = !alarmState ? "bg-black text-green-500" : "";
 
   const handleAlarmPower = () => {
-    setAlarmOn(!alarmOn);
-    alarmPower(!alarmOn);
+    dispatch(clockActions.setAlarmPower(!alarmState));
   };
 
   return (

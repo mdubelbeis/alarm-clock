@@ -1,52 +1,85 @@
-interface SetNewAlarmProps {
-  addNewAlarm: (e: React.ChangeEvent<HTMLFormElement>) => void;
-  handleAlarmName: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  alarmPower: boolean;
-  handleHourChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  handleMinutesChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  handleAmOrPmChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  hourCount: number[];
-  minutes: string[];
-}
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { clockActions } from "../../app/Clock/ClockSlice";
+import { RootState } from "../../app/store";
 
-const handleOutput = (min: string) => {
-  switch (min) {
-    case "0":
-    case "1":
-    case "2":
-    case "3":
-    case "4":
-    case "5":
-    case "6":
-    case "7":
-    case "8":
-    case "9": {
-      return (
-        <option key={min} value={min}>
-          {"0" + min}
-        </option>
-      );
-    }
-    default: {
-      return (
-        <option key={min} value={min}>
-          {min}
-        </option>
-      );
-    }
-  }
-};
+const hourCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-const SetNewAlarm: React.FC<SetNewAlarmProps> = ({
-  addNewAlarm,
-  handleAlarmName,
-  alarmPower,
-  handleHourChange,
-  handleMinutesChange,
-  handleAmOrPmChange,
-  hourCount,
-  minutes,
-}) => {
+const SetNewAlarm: React.FC = () => {
+  const dispatch = useDispatch();
+  let alarmName: string = "";
+  let minutes: string[] = [];
+  const alarmPower = useSelector(
+    (state: RootState) => state.clockStore.alarmPower
+  );
+
+  const handleNewAlarmSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    let hour = e.currentTarget.hourCount.value;
+    let minutes = e.currentTarget.minutesCount.value;
+    let seconds = "00";
+    let amOrPm = e.currentTarget.amOrPm.value;
+
+    useEffect(() => {
+      getMinutesOptions();
+    }, [alarmPower]);
+
+    const getMinutesOptions = () => {
+      for (let i = 0; i <= 59; i++) {
+        if (i >= 0) {
+          minutes.push(String(i));
+        }
+      }
+    };
+
+    if (minutes < 10) {
+      minutes = "0" + e.currentTarget.minutesCount.value;
+    } else {
+      minutes = e.currentTarget.minutesCount.value;
+    }
+
+    const newAlarm = {
+      alarmName: `${alarmName}`,
+      alarmTime: `${hour}:${minutes}:${seconds} ${amOrPm}`,
+    };
+
+    dispatch(clockActions.addNewAlarm(newAlarm));
+    alarmName = " ";
+  };
+
+  const handleAlarmName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    alarmName = e.target.value;
+  };
+
+  const handleOutput = (min: string) => {
+    switch (min) {
+      case "0":
+      case "1":
+      case "2":
+      case "3":
+      case "4":
+      case "5":
+      case "6":
+      case "7":
+      case "8":
+      case "9": {
+        return (
+          <option key={min} value={min}>
+            {"0" + min}
+          </option>
+        );
+      }
+      default: {
+        return (
+          <option key={min} value={min}>
+            {min}
+          </option>
+        );
+      }
+    }
+  };
+
   return (
     <div className="col-span-1 flex flex-col px-4 py-5 bg-blue-500 rounded-xl text-black">
       <div>
@@ -55,7 +88,7 @@ const SetNewAlarm: React.FC<SetNewAlarmProps> = ({
         </h3>
         <form
           className="w-full flex flex-col justify-center items-center gap-6 mt-10"
-          onSubmit={addNewAlarm}
+          onSubmit={handleNewAlarmSubmit}
         >
           <div className="flex flex-col items-center gap-2 w-full">
             <label>
@@ -64,8 +97,9 @@ const SetNewAlarm: React.FC<SetNewAlarmProps> = ({
                 id="alarmName"
                 name="alarmName"
                 className="py-2 px-4 rounded-lg"
-                onChange={handleAlarmName}
+                onChange={() => handleAlarmName}
                 placeholder="Name your alarm"
+                value={alarmName}
                 maxLength={20}
                 disabled={!alarmPower}
               />
@@ -93,7 +127,6 @@ const SetNewAlarm: React.FC<SetNewAlarmProps> = ({
                 name="hourCount"
                 id="hourCount"
                 className="w-fit rounded-md p-3"
-                onChange={handleHourChange}
                 disabled={!alarmPower}
               >
                 {hourCount.map((hour) => {
@@ -117,7 +150,6 @@ const SetNewAlarm: React.FC<SetNewAlarmProps> = ({
                 name="minutesCount"
                 id="minutesCount"
                 className="w-fit rounded-md p-3"
-                onChange={handleMinutesChange}
                 disabled={!alarmPower}
               >
                 {minutes.map((min) => handleOutput(min))}
@@ -132,7 +164,6 @@ const SetNewAlarm: React.FC<SetNewAlarmProps> = ({
                 className="rounded-md p-3"
                 name="amOrPm"
                 id="amOrPm"
-                onChange={handleAmOrPmChange}
                 disabled={!alarmPower}
               >
                 <option value="A">AM</option>

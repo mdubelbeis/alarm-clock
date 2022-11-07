@@ -1,30 +1,66 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
 
 export interface ClockState {
   time: string;
-  activeTimers: {id: number, timerName: string, alarmTime: {}[];
+  activeAlarms: { id: string; alarmName: string; alarmTime: string }[];
+  favoriteLocations: {
+    id: string;
+    state: string;
+    city: string;
+    zipCode: string;
+  }[];
   alarmPower: boolean;
-};
+  clockPower: boolean;
+}
+
+export interface AlarmState {
+  alarmName: string;
+  alarmTime: string;
+}
 
 const initialState: ClockState = {
   time: new Date().toLocaleTimeString(),
-  activeTimers: [{id: 001, alarmName: 'Workout', alarmTime: '12:00:00'}],
+  activeAlarms: [],
+  favoriteLocations: [],
   alarmPower: false,
-}
+  clockPower: true,
+};
 
 export const clockSlice = createSlice({
   name: "clock",
   initialState,
   reducers: {
-    addNewTimer(state, action: PayloadAction<string>) {
-      state.activeTimers = [...state.activeTimers, action.payload];
+    addNewAlarm(state, action: PayloadAction<AlarmState>) {
+      state.activeAlarms = [
+        ...state.activeAlarms,
+        {
+          id: uuidv4(),
+          alarmName: action.payload.alarmName,
+          alarmTime: action.payload.alarmTime,
+        },
+      ];
     },
-    removeTimer(state, action: PayloadAction<string>) {
-      state.activeTimers = state.activeTimers.filter(
-        (timer: {id: number, alarmName: string, alarmTime: string}) => timer.alarmName !== action.payload);
+    removeAlarm(state, action: PayloadAction<string>) {
+      state.activeAlarms = state.activeAlarms.filter(
+        (alarm) => alarm.alarmName !== action.payload
       );
-    }
+    },
+    addFavoriteLocation(state, action: PayloadAction<string>) {
+      state.favoriteLocations = [
+        ...state.favoriteLocations,
+        {
+          id: uuidv4(),
+          state: action.payload,
+          city: action.payload,
+          zipCode: action.payload,
+        },
+      ];
+    },
+    setAlarmPower(state, action: PayloadAction<boolean>) {
+      state.alarmPower = action.payload;
+    },
   },
 });
 

@@ -1,8 +1,10 @@
-interface ActiveAlarmListProps {
-  activeAlarms: { id: number; name: string; time: string }[];
-}
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
 
-const ActiveAlarmList: React.FC<ActiveAlarmListProps> = ({ activeAlarms }) => {
+const ActiveAlarmList: React.FC = () => {
+  const activeAlarms = useSelector(
+    (state: RootState) => state.clockStore.activeAlarms
+  );
   return (
     <ul className="grid grid-cols-2 gap-10">
       {activeAlarms.map((alarm) => {
@@ -11,8 +13,8 @@ const ActiveAlarmList: React.FC<ActiveAlarmListProps> = ({ activeAlarms }) => {
             key={alarm.id}
             className="shadow-xl bg-slate-100 text-black text-center p-4 rounded-xl"
           >
-            <p>{alarm.name.toUpperCase()}</p>
-            <p>{alarm.time.toUpperCase()}</p>
+            <p>{alarm.alarmName.toUpperCase()}</p>
+            <p>{alarm.alarmTime.toUpperCase()}</p>
           </li>
         );
       })}
