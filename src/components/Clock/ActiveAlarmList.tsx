@@ -13,7 +13,6 @@ const ActiveAlarmList: React.FC = () => {
             key={alarm.id}
             className="shadow-xl bg-slate-100 text-black text-center p-4 rounded-xl"
           >
-            <p>{alarm.alarmName.toUpperCase()}</p>
             <p>{alarm.alarmTime.toUpperCase()}</p>
           </li>
         );

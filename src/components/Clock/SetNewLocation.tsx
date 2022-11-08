@@ -28,7 +28,7 @@ const SetNewLocation: React.FC = () => {
 
     <div className="col-span-1 flex flex-col w-full p-4 bg-white border-[1px] border-blue-500 rounded-xl">
       <h3 className="text-center text-blue-500 text-4xl tracking-wider py-10 lg:m-10">
-        SET NEW LOCATION
+        YOUR LOCATION
       </h3>
       <div className="justify-self-end">
         <form
@@ -59,7 +59,7 @@ const SetNewLocation: React.FC = () => {
             type="submit"
             className="py-2 px-4 rounded-xl bg-white text-blue-500"
           >
-            ENTER
+            FORECAST
           </button>
         </form>
       </div>

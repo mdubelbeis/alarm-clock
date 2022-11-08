@@ -7,7 +7,7 @@ export interface ClockState {
   time: string;
   alarmModule: {
     alarmPower: boolean;
-    activeAlarms: { id: string; alarmName: string; alarmTime: string }[];
+    activeAlarms: { id: string; alarmTime: string }[];
   };
   weatherModule: {
     currentZipCode: string;
@@ -22,7 +22,7 @@ export interface FavoriteLocation {
 }
 
 export interface AlarmState {
-  alarmName: string;
+  id: string;
   alarmTime: string;
 }
 
@@ -32,12 +32,20 @@ const initialState: ClockState = {
 
   alarmModule: {
     alarmPower: false,
-    activeAlarms: [],
+    activeAlarms: [
+      { id: uuidv4(), alarmTime: "12:00 P" },
+      { id: uuidv4(), alarmTime: "12:30 P" },
+      { id: uuidv4(), alarmTime: "1:00 P" },
+    ],
   },
 
   weatherModule: {
     currentZipCode: "78641",
-    favoriteLocations: [],
+    favoriteLocations: [
+      { id: uuidv4(), zipCode: "78641", isFavorite: true },
+      { id: uuidv4(), zipCode: "23515", isFavorite: true },
+      { id: uuidv4(), zipCode: "08731", isFavorite: true },
+    ],
   },
 };
 
@@ -50,7 +58,6 @@ export const clockSlice = createSlice({
         ...state.alarmModule.activeAlarms,
         {
           id: uuidv4(),
-          alarmName: action.payload.alarmName,
           alarmTime: action.payload.alarmTime,
         },
       ];
@@ -72,6 +79,7 @@ export const clockSlice = createSlice({
         },
       ];
     },
+
     addNewLocation(state, action: PayloadAction<string>) {
       state.weatherModule.currentZipCode = action.payload;
     },
