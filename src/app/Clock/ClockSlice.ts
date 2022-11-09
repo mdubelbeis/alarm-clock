@@ -45,6 +45,9 @@ const initialState: ClockState = {
       { id: uuidv4(), zipCode: "78641", isFavorite: true },
       { id: uuidv4(), zipCode: "23515", isFavorite: true },
       { id: uuidv4(), zipCode: "08731", isFavorite: true },
+      { id: uuidv4(), zipCode: "78717", isFavorite: true },
+      { id: uuidv4(), zipCode: "08753", isFavorite: true },
+      { id: uuidv4(), zipCode: "60409", isFavorite: true },
     ],
   },
 };

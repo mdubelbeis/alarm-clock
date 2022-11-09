@@ -6,8 +6,9 @@ const FavoriteLocationsList: React.FC = () => {
   const favoriteLocations = useSelector(
     (state: RootState) => state.clockStore.weatherModule.favoriteLocations
   );
+
   return (
-    <ul className="flex flex-col gap-4">
+    <ul className="grid grid-cols-4 gap-4">
       {favoriteLocations.map((location) => {
         return (
           <li
@@ -15,10 +16,7 @@ const FavoriteLocationsList: React.FC = () => {
             className="bg-blue-500 rounded-lg py-2 px-4 w-fit hover:bg-blue-700 hover:cursor-pointer"
             onClick={handleLocationClick}
           >
-            {/* <p className="text-white">
-              {location.city}, {location.state}
-            </p> */}
-            <p className="text-white">{location.zipCode}</p>
+            <p className="text-white tracking-wider">{location.zipCode}</p>
           </li>
         );
       })}
