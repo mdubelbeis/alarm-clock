@@ -8,7 +8,7 @@ export const weatherApi = createApi({
   endpoints: (builder) => ({
     getWeatherByZipCode: builder.query<() => void, string>({
       query: (zipCode: string) =>
-        `&postal_code=${zipCode}&country=US&key=key=${"505ef68a61ca46fcba582a1e6e0daf3c"}&units=I`,
+        `&postal_code=${zipCode}&country=US&key=key=${"???"}&units=I`,
     }),
   }),
 });
