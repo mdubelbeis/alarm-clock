@@ -1,16 +1,13 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../../app/store";
+import { useAppSelector } from "../../app/hooks";
 
 const ActiveAlarmList: React.FC = () => {
-  const activeAlarms = useSelector(
-    (state: RootState) => state.clockStore.alarmModule.activeAlarms
-  );
+  const activeAlarms = useAppSelector((state) => state.clockStore.activeAlarms);
   return (
     <ul className="grid grid-cols-2 gap-10">
       {activeAlarms.map((alarm) => {
         return (
           <li
-            key={alarm.id}
+            key={alarm.alarmId}
             className="shadow-xl bg-slate-100 text-black text-center p-4 rounded-xl"
           >
             <p>{alarm.alarmTime.toUpperCase()}</p>

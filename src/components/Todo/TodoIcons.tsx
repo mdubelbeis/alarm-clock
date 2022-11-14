@@ -22,10 +22,10 @@ const ICONS = [
 ];
 
 interface TodoIconsProps {
-  todo: { id: number; todo: string; isComplete: boolean };
-  handleDeleteTodo: (todo: string, id: number, isComplete: boolean) => void;
-  handleCompleteTodo: (todo: string, id: number, isComplete: boolean) => void;
-  handleEditTodo: (todo: string, id: number, isComplete: boolean) => void;
+  todo: { id: string; todo: string; isComplete: boolean };
+  handleDeleteTodo: (todo: string, id: string, isComplete: boolean) => void;
+  handleCompleteTodo: (todo: string, id: string, isComplete: boolean) => void;
+  handleEditTodo: (todo: string, id: string, isComplete: boolean) => void;
 }
 
 const TodoIcons: React.FC<TodoIconsProps> = ({

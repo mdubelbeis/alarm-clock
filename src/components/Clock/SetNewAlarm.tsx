@@ -1,17 +1,21 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { clockActions } from "../../app/Clock/ClockSlice";
-import { RootState } from "../../app/store";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { clockActions } from "../../features/Clock/ClockSlice";
+import { v4 as uuidv4 } from "uuid";
 
 const hourCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
+interface NewAlarmState {
+  alarmId: string;
+  alarmTime: string;
+  alarmName: string;
+}
+
 const SetNewAlarm: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   let alarmName: string = "";
   let minutes: string[] = [];
-  const alarmPower = useSelector(
-    (state: RootState) => state.clockStore.alarmModule.alarmPower
-  );
+  const alarmPower = useAppSelector((state) => state.clockStore.alarmPower);
 
   const handleNewAlarmSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -39,13 +43,14 @@ const SetNewAlarm: React.FC = () => {
       minutes = e.currentTarget.minutesCount.value;
     }
 
-    const newAlarm = {
-      alarmName: `${alarmName}`,
+    const newAlarm: NewAlarmState = {
+      alarmId: uuidv4(),
       alarmTime: `${hour}:${minutes}:${seconds} ${amOrPm}`,
+      alarmName: `${alarmName}`,
     };
 
-    dispatch(clockActions.addNewAlarm(newAlarm));
-    alarmName = " ";
+    dispatch(clockActions.setNewAlarm(newAlarm));
+    alarmName = "";
   };
 
   const handleAlarmName = (e: React.ChangeEvent<HTMLInputElement>) => {

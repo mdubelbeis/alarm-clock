@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useGetWeatherByZipCodeQuery } from "../../features/apiSlice";
 
 const WEATHER_ICONS = [
   //* MIST/FOG
@@ -264,22 +265,22 @@ const Weather: React.FC = () => {
     setIcon(dayUrl);
   };
 
-  const getWeatherData = async (zipCode: string) => {
-    try {
-      const response = await fetch(
-        `https://api.weatherbit.io/v2.0/current?&postal_code=${zipCode}&country=US&key=???&units=I`
-      );
-      const data = await response.json();
-      setWeatherData(data.data[0]);
-      setTemperature(data.data[0].temp);
-      setCity(data.data[0].city_name);
-      setState(data.data[0].state_code);
-      setWeatherDescription(data.data[0].weather.description);
-      getWeatherIcon(data.data[0].weather.code);
-    } catch (error) {
-      console.log("ERROR: " + error);
-    }
-  };
+  // const getWeatherData = async (zipCode: string) => {
+  //   try {
+  //     const response = await fetch(
+  //       `https://api.weatherbit.io/v2.0/current?&postal_code=${zipCode}&country=US&key=???&units=I`
+  //     );
+  //     const data = await response.json();
+  //     setWeatherData(data.data[0]);
+  //     setTemperature(data.data[0].temp);
+  //     setCity(data.data[0].city_name);
+  //     setState(data.data[0].state_code);
+  //     setWeatherDescription(data.data[0].weather.description);
+  //     getWeatherIcon(data.data[0].weather.code);
+  //   } catch (error) {
+  //     console.log("ERROR: " + error);
+  //   }
+  // };
 
   return (
     <div className="ml-4 text-2xl lg:absolute lg:top-2 lg:left-4">

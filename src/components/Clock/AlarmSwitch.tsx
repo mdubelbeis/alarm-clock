@@ -1,12 +1,9 @@
-import { useDispatch, useSelector } from "react-redux";
-import { clockActions } from "../../app/Clock/ClockSlice";
-import { RootState } from "../../app/store";
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { clockActions } from "../../features/Clock/ClockSlice";
 
 const AlarmSwitch: React.FC = () => {
-  const dispatch = useDispatch();
-  const alarmState = useSelector(
-    (state: RootState) => state.clockStore.alarmModule.alarmPower
-  );
+  const dispatch = useAppDispatch();
+  const alarmState = useAppSelector((state) => state.clockStore.alarmPower);
   let alarmOnStyle = alarmState ? "bg-green-500 text-black" : "";
   let alarmOffStyle = !alarmState ? "bg-black text-green-500" : "";
 

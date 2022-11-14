@@ -1,20 +1,19 @@
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../app/store";
-import { todoActions } from "../../app/Todo/TodoSlice";
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { todoActions } from "../../features/Todo/TodoSlice";
 
 import TodoIcons from "./TodoIcons";
 
 const TodoList: React.FC = () => {
+  const dispatch = useAppDispatch();
   const [todoName, setTodoName] = useState<string>("");
   const [deleteTodoName, setDeleteTodoName] = useState<string>("");
   const [editTodoName, setEditTodoName] = useState<string>("");
-  const dispatch = useDispatch();
-  const todos = useSelector((state: RootState) => state.todoStore.todoList);
+  const todos = useAppSelector((state) => state.todoStore.todoList);
 
   const handleCompleteTodo = (
     name: string,
-    id: number,
+    id: string,
     isComplete: boolean
   ) => {
     const filteredTodos = todos.filter((todo) => todo.todo !== name);
@@ -25,7 +24,7 @@ const TodoList: React.FC = () => {
     setDeleteTodoName("");
   };
 
-  const handleDeleteTodo = (todo: string, id: number, isComplete: boolean) => {
+  const handleDeleteTodo = (todo: string, id: string, isComplete: boolean) => {
     const filteredTodos = todos.filter((task) => task.todo !== todo);
     setTimeout(() => {
       dispatch(todoActions.deleteTodo(filteredTodos));
@@ -36,7 +35,7 @@ const TodoList: React.FC = () => {
 
   const handleEditTodo = (
     todo: string,
-    id: number,
+    id: string,
     isComplete: boolean
   ): void => {
     setEditTodoName(todo);

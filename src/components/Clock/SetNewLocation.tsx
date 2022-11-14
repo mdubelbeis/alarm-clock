@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { clockActions } from "../../app/Clock/ClockSlice";
+import { useAppDispatch } from "../../app/hooks";
 
 import Icons from "../ui/Icons";
+import { weatherActions } from "../../features/Clock/WeatherSlice";
+import { useGetCurrentWeatherByZipCodeQuery } from "../../features/apiSlice";
 
 const SetNewLocation: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const [zipCode, setZipCode] = useState<string>("");
 
@@ -16,7 +17,9 @@ const SetNewLocation: React.FC = () => {
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    dispatch(clockActions.addNewLocation(e.currentTarget.zipCodeInput.value));
+    dispatch(weatherActions.addNewLocation(e.currentTarget.zipCodeInput.value));
+    const { data } = useGetCurrentWeatherByZipCodeQuery(zipCode);
+    console.log(data);
   };
 
   return (

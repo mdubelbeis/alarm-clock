@@ -1,10 +1,9 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../../app/store";
+import { useAppSelector } from "../../app/hooks";
 
 const FavoriteLocationsList: React.FC = () => {
   const handleLocationClick = () => {};
-  const favoriteLocations = useSelector(
-    (state: RootState) => state.clockStore.weatherModule.favoriteLocations
+  const favoriteLocations = useAppSelector(
+    (state) => state.weatherStore.favoriteLocations
   );
 
   return (

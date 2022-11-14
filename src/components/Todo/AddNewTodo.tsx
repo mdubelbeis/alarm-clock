@@ -1,21 +1,23 @@
 import { useState, useEffect } from "react";
-import { RootState } from "../../app/store";
-import { todoActions } from "../../app/Todo/TodoSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { todoActions } from "../../features/Todo/TodoSlice";
+import { v4 as uuidv4 } from "uuid";
 
 interface AddNewTodoProps {
   handleErrorMessage: (message: string) => void;
 }
 
 const AddNewTodo: React.FC<AddNewTodoProps> = ({ handleErrorMessage }) => {
-  const [todoText, setTodoText] = useState<string>("");
+  const todoText = useAppSelector((state) => state.todoStore.todoText);
+  const todos = useAppSelector((state) => state.todoStore.todoList);
+  const dispatch = useAppDispatch();
+
+  // const [todoText, setTodoText] = useState<string>("");
   const [windowSize, setWindowSize] = useState<number>(window.innerWidth);
   const [maxLength, setMaxLength] = useState<number>(28);
   const [errorMessage, setErrorMessage] = useState<string>("");
   // const [submitError, setSubmitError] = useState<string>("");
   const [disableBtn, setDisableBtn] = useState<boolean>(false);
-  const dispatch = useDispatch();
-  const todos = useSelector((state: RootState) => state.todoStore.todoList);
 
   useEffect(() => {
     getWindowSize();
@@ -31,28 +33,29 @@ const AddNewTodo: React.FC<AddNewTodoProps> = ({ handleErrorMessage }) => {
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTodoText(e.target.value);
-  };
-
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const filterTodoNames = todos.filter(
-      (todo) => todo.todo.toLowerCase() === todoText.toLowerCase()
+      (todo) => todo.todo.toLowerCase() === todoText?.toLowerCase()
     );
 
     if (filterTodoNames.length === 0 && todoText.length > 0) {
-      dispatch(todoActions.addTodo(todoText));
+      dispatch(
+        todoActions.addNewTodo([
+          { id: uuidv4(), todo: todoText, isComplete: false },
+          ...todos,
+        ])
+      );
       setErrorMessage("");
     } else {
-      todoText.length <= 0
+      todoText?.length <= 0
         ? setErrorMessage("A Todo must have more than one letter...")
         : setErrorMessage("That Todo is already in your Todo list...");
     }
 
     handleErrorMessage(errorMessage);
-    setTodoText("");
+    dispatch(todoActions.clearTodoText());
   };
 
   return (
@@ -67,7 +70,7 @@ const AddNewTodo: React.FC<AddNewTodoProps> = ({ handleErrorMessage }) => {
           autoFocus
           placeholder="Add new task"
           value={todoText}
-          onChange={handleInputChange}
+          onChange={(e) => dispatch(todoActions.setTodoText(e.target.value))}
           maxLength={maxLength}
         />
       </label>

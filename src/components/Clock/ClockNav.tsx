@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 const CLOCK_LIST = [
-  { id: Math.random(), text: "STOP WATCH", link: "./stop-watch" },
-  { id: Math.random(), text: "TIMER", link: "./timer" },
+  { id: uuidv4(), text: "STOP WATCH", link: "./stop-watch" },
+  { id: uuidv4(), text: "TIMER", link: "./timer" },
 ];
 
 const ClockNav: React.FC = () => {
