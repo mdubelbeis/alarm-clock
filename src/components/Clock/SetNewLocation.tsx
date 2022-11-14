@@ -24,8 +24,9 @@ const SetNewLocation: React.FC = () => {
       isFavorite: isFavorite,
     };
     dispatch(setNewLocation(data));
-    // const { data } = useGetCurrentWeatherByZipCodeQuery(zipCode);
-    // console.log(data);
+    // API CALL FOR WEATHER DATA
+    setZipCode("");
+    setIsFavorite(!isFavorite);
   };
 
   return (
@@ -37,17 +38,17 @@ const SetNewLocation: React.FC = () => {
 
     <div className="col-span-1 flex flex-col w-full p-4 bg-white border-[1px] border-blue-500 rounded-xl">
       <h3 className="text-center text-blue-500 text-4xl tracking-wider py-10 lg:m-10">
-        YOUR LOCATION
+        SET NEW LOCATION
       </h3>
       <div className="justify-self-end">
         <form
-          className="bg-blue-500 flex flex-col justify-between p-20 lg:py-32 gap-6 w-full rounded-b-xl shadow-lg"
+          className="bg-blue-500 flex flex-col justify-between py-20 px-10 lg:py-32 gap-6 w-full mx-auto rounded-b-xl shadow-lg"
           onSubmit={handleSubmit}
         >
           <div className="flex gap-2 w-full justify-center">
             <label>
               <input
-                className="bg-white py-2 px-4 w-full rounded-xl text-blue-500"
+                className="bg-white py-2 px-4 w-full rounded-xl text-blue-500 shadow-xl"
                 type="number"
                 id="zipCodeInput"
                 onChange={(e) => setZipCode(e.target.value)}
@@ -66,7 +67,7 @@ const SetNewLocation: React.FC = () => {
 
           <button
             type="submit"
-            className="py-2 px-4 rounded-xl bg-white text-blue-500"
+            className="py-2 px-4 rounded-xl bg-white text-blue-500 place-self-center w-full max-w-md lg:w-9/12 shadow-xl"
           >
             GET FORECAST
           </button>
