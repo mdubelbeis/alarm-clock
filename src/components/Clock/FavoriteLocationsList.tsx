@@ -12,7 +12,7 @@ const FavoriteLocationsList: React.FC = () => {
         return (
           <li
             key={location.locationId}
-            className="bg-blue-500 rounded-lg py-2 px-4 w-fit hover:bg-blue-700 hover:cursor-pointer"
+            className="bg-blue-500 shadow-xl rounded-lg py-2 px-4 w-fit hover:bg-blue-700 hover:cursor-pointer"
             onClick={handleLocationClick}
           >
             <p className="text-white tracking-wider">{location.zipCode}</p>
