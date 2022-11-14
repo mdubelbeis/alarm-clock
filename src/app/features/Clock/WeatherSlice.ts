@@ -35,7 +35,7 @@ export const weatherSlice = createSlice({
     setNewLocation(
       state,
       action: PayloadAction<{
-        id: string;
+        locationId: string;
         zipCode: string;
         isFavorite: boolean;
       }>
@@ -44,7 +44,7 @@ export const weatherSlice = createSlice({
       if (action.payload.isFavorite) {
         state.favoriteLocations = [
           {
-            locationId: action.payload.id,
+            locationId: action.payload.locationId,
             zipCode: action.payload.zipCode,
             isFavorite: true,
           },
@@ -53,7 +53,7 @@ export const weatherSlice = createSlice({
       } else {
         state.recentLocations = [
           {
-            locationId: action.payload.id,
+            locationId: action.payload.locationId,
             zipCode: action.payload.zipCode,
             isFavorite: false,
           },
