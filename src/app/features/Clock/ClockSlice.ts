@@ -43,8 +43,8 @@ export const clockSlice = createSlice({
   name: "clockSlice",
   initialState,
   reducers: {
-    setNewAlarm: (state, action: PayloadAction<AlarmState>) => {
-      state.activeAlarms = [...state.activeAlarms].concat(action.payload);
+    setNewAlarm(state, action: PayloadAction<AlarmState>): void {
+      state.activeAlarms = [action.payload, ...state.activeAlarms];
     },
 
     // removeAlarm(state, action: PayloadAction<string>) {
@@ -53,11 +53,12 @@ export const clockSlice = createSlice({
     //   );
     // },
 
-    setAlarmPower: (state, action: PayloadAction<boolean>) => {
+    setAlarmPower(state, action: PayloadAction<boolean>): void {
       state.alarmPower = action.payload;
     },
   },
 });
 
-export const { setNewAlarm, setAlarmPower } = clockSlice.actions;
-export default clockSlice.reducer;
+const { actions, reducer } = clockSlice;
+export const { setNewAlarm, setAlarmPower } = actions;
+export default reducer;

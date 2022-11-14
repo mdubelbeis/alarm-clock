@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useAppSelector } from "../../app/hooks";
 
 const WEATHER_ICONS = [
   //* MIST/FOG
@@ -246,17 +247,13 @@ const Weather: React.FC = () => {
   //* Find other data to use for display
   const [weatherData, setWeatherData] = useState<{}>({});
 
-  const [zipCode, setZipCode] = useState<string>("");
+  const zipCode = useAppSelector((state) => state.weatherStore.currentZipCode);
+
   const [temperature, setTemperature] = useState<string>("");
   const [city, setCity] = useState<string>("");
   const [state, setState] = useState<string>("");
   const [weatherDescription, setWeatherDescription] = useState<string>("");
   const [icon, setIcon] = useState<string>("");
-
-  useEffect(() => {
-    setZipCode("78641");
-    // getWeatherData(zipCode);
-  }, []);
 
   const getWeatherIcon = (code: number) => {
     const filteredIcon = WEATHER_ICONS.filter((icon) => icon.code === code);

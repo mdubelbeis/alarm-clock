@@ -1,25 +1,38 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
 
+interface Location {
+  locationId: string;
+  zipCode: string;
+  isFavorite: boolean;
+}
+
+const FAV_LOCATIONS = [
+  { locationId: uuidv4(), zipCode: "78641", isFavorite: true },
+  { locationId: uuidv4(), zipCode: "08731", isFavorite: true },
+];
+
+uuidv4();
 export interface WeatherState {
   currentZipCode: string;
-  locations: { id: string; zipCode: string; isFavorite: boolean }[];
-  favoriteLocations: { id: string; zipCode: string; isFavorite: boolean }[];
+  recentLocations: Location[];
+  favoriteLocations: Location[];
   temperature: string;
 }
 
 export const initialState: WeatherState = {
-  currentZipCode: "78641",
-  favoriteLocations: [],
-  locations: [],
+  currentZipCode: "23511",
+  favoriteLocations: FAV_LOCATIONS,
+  recentLocations: [],
   temperature: "0",
 };
 
 export const weatherSlice = createSlice({
-  name: "weather",
+  name: "weatherSlice",
   initialState,
   reducers: {
-    addNewLocation(
+    setNewLocation(
       state,
       action: PayloadAction<{
         id: string;
@@ -29,14 +42,28 @@ export const weatherSlice = createSlice({
     ) {
       state.currentZipCode = action.payload.zipCode;
       if (action.payload.isFavorite) {
-        state.favoriteLocations.push(action.payload);
+        state.favoriteLocations = [
+          {
+            locationId: action.payload.id,
+            zipCode: action.payload.zipCode,
+            isFavorite: true,
+          },
+          ...state.favoriteLocations,
+        ];
       } else {
-        state.locations.push(action.payload);
+        state.recentLocations = [
+          {
+            locationId: action.payload.id,
+            zipCode: action.payload.zipCode,
+            isFavorite: false,
+          },
+          ...state.recentLocations,
+        ];
       }
     },
   },
 });
 
-export const weatherActions = weatherSlice.actions;
-
-export default weatherSlice.reducer;
+const { actions, reducer } = weatherSlice;
+export const { setNewLocation } = actions;
+export default reducer;
