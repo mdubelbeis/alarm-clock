@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
+import { RootState } from "../../store";
 
 export interface AlarmState {
   alarmId: string;
@@ -17,6 +18,8 @@ const ACTIVE_ALARMS: AlarmState[] = [
 export interface ClockState {
   clockPower: boolean;
   time: string;
+  date: string;
+  dayOfWeek: number;
   alarmPower: boolean;
   activeAlarms: AlarmState[];
 }
@@ -29,6 +32,8 @@ export interface FavoriteLocation {
 
 const initialState: ClockState = {
   time: new Date().toLocaleTimeString(),
+  date: new Date().toLocaleDateString(),
+  dayOfWeek: new Date().getDay(),
   clockPower: true,
   alarmPower: false,
   activeAlarms: ACTIVE_ALARMS,
@@ -55,5 +60,12 @@ export const clockSlice = createSlice({
 });
 
 export const clockActions = clockSlice.actions;
+
+// export const time = (state: RootState) => state.clockStore.time;
+// export const date = (state: RootState) => state.clockStore.date;
+// export const dayOfWeek = (state: RootState) => state.clockStore.dayOfWeek;
+// export const clockPower = (state: RootState) => state.clockStore.clockPower;
+// export const alarmPower = (state: RootState) => state.clockStore.alarmPower;
+// export const activeAlarms = (state: RootState) => state.clockStore.activeAlarms;
 
 export default clockSlice.reducer;

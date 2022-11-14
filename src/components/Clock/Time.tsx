@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import React, { useState, useEffect } from "react";
+import { useAppSelector } from "../../app/hooks";
 
 const Time: React.FC = () => {
-  let timeOutput = useAppSelector((state) => state.clockStore.time);
+  let timeOutput = useAppSelector(state => state.clockStore.time);
   let filteredOutput = timeOutput.replace("M", "");
   const [output, setOutput] = useState(filteredOutput);
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { todoActions } from "../../features/Todo/TodoSlice";
+import { todoActions } from "../../app/features/Todo/TodoSlice";
 
 import TodoIcons from "./TodoIcons";
 

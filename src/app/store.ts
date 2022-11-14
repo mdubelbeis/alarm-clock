@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import todoReducers from "../features/Todo/TodoSlice";
-import clockReducers from "../features/Clock/ClockSlice";
-import weatherReducers from "../features/Clock/WeatherSlice";
-import { currentWeatherApi } from "../features/apiSlice";
+import todoReducers from "./features/Todo/TodoSlice";
+import clockReducers from "./features/Clock/ClockSlice";
+import weatherReducers from "./features/Clock/WeatherSlice";
+import { currentWeatherApi } from "./features/apiSlice";
 
 export const store = configureStore({
   reducer: {

@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useAppDispatch } from "../../app/hooks";
 
 import Icons from "../ui/Icons";
-import { weatherActions } from "../../features/Clock/WeatherSlice";
-import { useGetCurrentWeatherByZipCodeQuery } from "../../features/apiSlice";
+import { weatherActions } from "../../app/features/Clock/WeatherSlice";
+import { useGetCurrentWeatherByZipCodeQuery } from "../../app/features/apiSlice";
 
 const SetNewLocation: React.FC = () => {
   const dispatch = useAppDispatch();

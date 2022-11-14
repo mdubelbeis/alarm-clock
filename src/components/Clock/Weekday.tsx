@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
+import { useAppSelector } from "../../app/hooks";
 import DaysList from "./DaysList";
 import TodayDate from "./TodayDate";
 
 const Weekday: React.FC = () => {
-  const [dayOfWeek, setDayOfWeek] = useState(new Date().getDay());
+  const dayOfWeek = useAppSelector((state) => state.clockStore.dayOfWeek);
   const [day, setDay] = useState("");
 
   useEffect(() => {

@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { clockActions } from "../../features/Clock/ClockSlice";
+import { clockActions } from "../../app/features/Clock/ClockSlice";
 import { v4 as uuidv4 } from "uuid";
 
 const hourCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -14,10 +14,12 @@ interface NewAlarmState {
 const SetNewAlarm: React.FC = () => {
   const dispatch = useAppDispatch();
   let alarmName: string = "";
-  let minutes: string[] = [];
+  const minutes: string[] = [];
   const alarmPower = useAppSelector((state) => state.clockStore.alarmPower);
 
-  const handleNewAlarmSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
+  const handleNewAlarmSubmit = (
+    e: React.ChangeEvent<HTMLFormElement>
+  ): void => {
     e.preventDefault();
 
     let hour = e.currentTarget.hourCount.value;
@@ -27,7 +29,7 @@ const SetNewAlarm: React.FC = () => {
 
     useEffect(() => {
       getMinutesOptions();
-    }, [alarmPower]);
+    }, []);
 
     const getMinutesOptions = () => {
       for (let i = 0; i <= 59; i++) {
@@ -53,7 +55,7 @@ const SetNewAlarm: React.FC = () => {
     alarmName = "";
   };
 
-  const handleAlarmName = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAlarmName = (e: React.ChangeEvent<HTMLInputElement>): void => {
     alarmName = e.target.value;
   };
 
@@ -102,7 +104,7 @@ const SetNewAlarm: React.FC = () => {
                 id="alarmName"
                 name="alarmName"
                 className="py-2 px-4 rounded-lg"
-                onChange={() => handleAlarmName}
+                onChange={handleAlarmName}
                 placeholder="Name your alarm"
                 value={alarmName}
                 maxLength={20}
