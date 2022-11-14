@@ -26,7 +26,7 @@ const Icons: React.FC<IconProps> = ({ d, width, id, isFavorite }) => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className={`${`${width} || w-10`} ${textColor} hover:cursor-pointer`}
+      className={`${`${width} || w-10`} ${textColor} hover:cursor-pointer drop-shadow-xl`}
     >
       <path strokeLinecap="round" strokeLinejoin="round" d={d} />
     </svg>
