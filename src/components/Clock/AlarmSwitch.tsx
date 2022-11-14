@@ -1,5 +1,5 @@
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { clockActions } from "../../app/features/Clock/ClockSlice";
+import { setAlarmPower } from "../../app/features/Clock/ClockSlice";
 
 const AlarmSwitch: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -8,7 +8,7 @@ const AlarmSwitch: React.FC = () => {
   let alarmOffStyle = !alarmState ? "bg-black text-green-500" : "";
 
   const handleAlarmPower = () => {
-    dispatch(clockActions.setAlarmPower(!alarmState));
+    dispatch(setAlarmPower(!alarmState));
   };
 
   return (

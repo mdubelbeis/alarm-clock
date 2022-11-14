@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { clockActions } from "../../app/features/Clock/ClockSlice";
+import { setNewAlarm } from "../../app/features/Clock/ClockSlice";
 import { v4 as uuidv4 } from "uuid";
 
 const hourCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -51,7 +51,7 @@ const SetNewAlarm: React.FC = () => {
       alarmName: `${alarmName}`,
     };
 
-    dispatch(clockActions.setNewAlarm(newAlarm));
+    dispatch(setNewAlarm(newAlarm));
     alarmName = "";
   };
 
