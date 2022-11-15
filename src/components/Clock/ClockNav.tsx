@@ -19,7 +19,7 @@ const ClockNav: React.FC = () => {
   });
   return (
     <nav>
-      <ul className="flex gap-4 justify-center lg:flex-row lg:absolute lg:top-4 lg:right-4">
+      <ul className="flex gap-4 justify-center lg:flex-row lg:absolute lg:top-4 lg:right-4 opacity-40">
         {listItem}
       </ul>
     </nav>

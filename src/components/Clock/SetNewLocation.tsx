@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch } from "../../app/hooks";
 import { v4 as uuidv4 } from "uuid";
 
@@ -26,7 +26,7 @@ const SetNewLocation: React.FC = () => {
     dispatch(setNewLocation(data));
     // API CALL FOR WEATHER DATA
     setZipCode("");
-    setIsFavorite(!isFavorite);
+    setIsFavorite(false);
   };
 
   return (
@@ -36,16 +36,17 @@ const SetNewLocation: React.FC = () => {
     //* Maybe have a recentLocations array when submitted?
     //* Output favoriteLocations array to user
 
-    <div className="col-span-1 flex flex-col w-full p-4 bg-white border-[1px] border-blue-500 rounded-xl">
-      <h3 className="text-center text-blue-500 text-4xl tracking-wider py-10 lg:m-10">
+    <div className="col-span-1 h-full flex flex-col justify-between w-full p-4 bg-white border-[1px] rounded-xl shadow-xl">
+      <h3 className="text-center text-blue-500 text-4xl tracking-wider py-10">
         SET NEW LOCATION
       </h3>
-      <div className="justify-self-end">
+      <div>{}</div>
+      <div className="justify-self-end shadow-xl rounded-lg bg-blue-500">
         <form
-          className="bg-blue-500 flex flex-col justify-between py-20 px-10 lg:py-32 gap-6 w-full mx-auto rounded-b-xl shadow-lg"
+          className="flex flex-col justify-between py-20 px-4 lg:py-10 gap-6 w-full mx-auto rounded-b-xl shadow-lg"
           onSubmit={handleSubmit}
         >
-          <div className="flex gap-2 w-full justify-center">
+          <div className="flex gap-4 w-full justify-center">
             <label>
               <input
                 className="bg-white py-2 px-4 w-full rounded-xl text-blue-500 shadow-xl"

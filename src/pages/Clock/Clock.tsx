@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import ActiveAlarms from "../../components/Clock/ActiveAlarms";
 import ClockTopWidgetBar from "../../components/Clock/ClockTopWidgetBar";
 import FavoriteLocations from "../../components/Clock/FavoriteLocations";
+import QuoteOfTheMoment from "../../components/Clock/QuoteOfTheMoment";
 import SetNewAlarm from "../../components/Clock/SetNewAlarm";
 import SetNewLocation from "../../components/Clock/SetNewLocation";
 import Time from "../../components/Clock/Time";
@@ -38,8 +39,9 @@ const Clock: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center gap-16">
-      <section className="mt-10 w-full bg-black py-10 opacity-90 text-green-500 drop-shadow-xl rounded">
+      <section className="relative mt-10 w-full bg-black py-10 opacity-90 text-green-500 drop-shadow-xl rounded">
         <ClockTopWidgetBar />
+        <QuoteOfTheMoment />
         <Time />
         <Weekday />
       </section>
@@ -54,7 +56,6 @@ const Clock: React.FC = () => {
           <ActiveAlarms />
           <FavoriteLocations />
         </div>
-        {/* ALARM SECTION */}
       </section>
     </div>
   );

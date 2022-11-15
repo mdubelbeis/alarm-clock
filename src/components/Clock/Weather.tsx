@@ -279,7 +279,7 @@ const Weather: React.FC = () => {
   // };
 
   return (
-    <div className="ml-4 text-2xl lg:absolute lg:top-2 lg:left-4">
+    <div className="ml-4 text-2xl lg:absolute lg:top-2 lg:left-4 opacity-40">
       <div className="flex flex-col text-center gap-2">
         <div className="flex flex-col items-center">
           <img src={icon} alt="weather icon" className="w-20 h-20" />

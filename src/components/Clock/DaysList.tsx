@@ -21,8 +21,8 @@ const DaysList: React.FC<DaysListProps> = ({ day }) => {
             key={weekday.id}
             className={`${
               weekday.day === day
-                ? "text-green-900 bg-green-400 uppercase border-2 border-green-900 p-2 rounded-lg"
-                : "text-green-500 uppercase border-2 border-green-500 p-2 rounded-lg"
+                ? "text-white bg-green-400 uppercase border-2 border-green-900 p-2 rounded-lg"
+                : "text-slate-100 uppercase border-2 border-green-500 p-2 rounded-lg"
             } tracking-wider`}
           >
             {weekday.day}

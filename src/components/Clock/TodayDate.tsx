@@ -5,7 +5,9 @@ const TodayDate: React.FC = () => {
 
   return (
     <div className="lg:m-4">
-      <small className="text-green-500 text-2xl lg:text-4xl">{date}</small>
+      <small className="text-green-500 text-2xl lg:text-4xl opacity-40">
+        {date}
+      </small>
     </div>
   );
 };

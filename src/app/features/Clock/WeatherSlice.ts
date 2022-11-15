@@ -22,7 +22,7 @@ export interface WeatherState {
 }
 
 export const initialState: WeatherState = {
-  currentZipCode: "23511",
+  currentZipCode: "78641",
   favoriteLocations: FAV_LOCATIONS,
   recentLocations: [],
   temperature: "0",

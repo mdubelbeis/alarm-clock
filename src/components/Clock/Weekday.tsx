@@ -40,10 +40,10 @@ const Weekday: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col opacity-60 items-center justify-center gap-2 text-2xl">
+    <div className="flex flex-col opacity-40 items-center justify-center gap-2 text-2xl">
       <TodayDate />
       <DaysList day={day} />
-      <div className="lg:hidden">{day.toUpperCase()}</div>
+      <div className="lg:hidden opacity-40">{day.toUpperCase()}</div>
     </div>
   );
 };
