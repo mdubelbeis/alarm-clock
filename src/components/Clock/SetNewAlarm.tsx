@@ -88,10 +88,14 @@ const SetNewAlarm: React.FC = () => {
   };
 
   return (
-    <div className="col-span-1 flex flex-col px-4 py-20 bg-blue-500 rounded-xl text-black">
+    <div className="col-span-1 flex flex-col p-10 bg-blue-500 rounded-xl text-black">
       <div>
-        <h3 className="text-center text-4xl text-white tracking-wider lg:mt-6">
-          SET NEW ALARM
+        <h3 className="text-center text-4xl text-white tracking-wider">
+          SET
+          <br />
+          NEW
+          <br />
+          ALARM
         </h3>
         <form
           className="w-full flex flex-col justify-center items-center gap-6 mt-10"

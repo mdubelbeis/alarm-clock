@@ -14,7 +14,7 @@ interface DaysListProps {
 
 const DaysList: React.FC<DaysListProps> = ({ day }) => {
   return (
-    <ul className="hidden lg:flex lg:gap-10 opacity-60">
+    <ul className="hidden lg:flex lg:gap-10">
       {DAYS.map((weekday) => {
         return (
           <li

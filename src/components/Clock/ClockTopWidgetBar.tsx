@@ -5,7 +5,7 @@ import AlarmSwitch from "./AlarmSwitch";
 
 const ClockTopWidgetBar: React.FC = () => {
   return (
-    <div className="flex flex-col-reverse w-full gap-14 opacity-60 text-center lg:flex-row lg:justify-between lg:gap-0">
+    <div className="flex flex-col-reverse w-full gap-14 text-center lg:flex-row lg:justify-between lg:gap-0">
       <Weather />
       <AlarmSwitch />
       <ClockNav />

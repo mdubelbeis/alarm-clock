@@ -16,7 +16,7 @@ const QuoteOfTheMoment: React.FC = () => {
   return (
     <figure
       onClick={handleQuoteClick}
-      className="hidden lg:flex lg:absolute top-32 left-[50%] -translate-x-[50%] flex-col opacity-40"
+      className="hidden lg:flex lg:absolute top-32 left-[50%] -translate-x-[50%] flex-col"
     >
       <blockquote className="opacity-40">
         <q>{quoteText}</q>

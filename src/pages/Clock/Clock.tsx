@@ -39,7 +39,7 @@ const Clock: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center gap-16">
-      <section className="relative mt-10 w-full bg-black py-10 opacity-90 text-green-500 drop-shadow-xl rounded">
+      <section className="relative mt-10 w-full bg-black py-10 text-green-500 drop-shadow-xl rounded">
         <ClockTopWidgetBar />
         <QuoteOfTheMoment />
         <Time />
