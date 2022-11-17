@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { todoActions } from "../../app/features/Todo/TodoSlice";
+import { todoActions } from "../../features/Todo/TodoSlice";
 import { v4 as uuidv4 } from "uuid";
 
 interface AddNewTodoProps {

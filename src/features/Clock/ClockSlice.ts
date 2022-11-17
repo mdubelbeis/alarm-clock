@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
-import { RootState } from "../../store";
+import { RootState } from "../../app/store";
 
 export interface AlarmState {
   alarmId: string;

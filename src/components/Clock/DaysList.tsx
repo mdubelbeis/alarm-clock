@@ -14,7 +14,7 @@ interface DaysListProps {
 
 const DaysList: React.FC<DaysListProps> = ({ day }) => {
   return (
-    <ul className="hidden lg:flex lg:gap-10">
+    <ul className="hidden lg:flex lg:gap-10 opacity-60">
       {DAYS.map((weekday) => {
         return (
           <li
@@ -22,7 +22,7 @@ const DaysList: React.FC<DaysListProps> = ({ day }) => {
             className={`${
               weekday.day === day
                 ? "text-white bg-green-400 uppercase border-2 border-green-900 p-2 rounded-lg"
-                : "text-slate-100 uppercase border-2 border-green-500 p-2 rounded-lg"
+                : "text-white uppercase border-2 border-green-500 p-2 rounded-lg"
             } tracking-wider`}
           >
             {weekday.day}

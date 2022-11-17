@@ -1,5 +1,5 @@
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { setAlarmPower } from "../../app/features/Clock/ClockSlice";
+import { setAlarmPower } from "../../features/Clock/ClockSlice";
 
 const AlarmSwitch: React.FC = () => {
   const dispatch = useAppDispatch();

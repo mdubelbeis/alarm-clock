@@ -3,7 +3,7 @@ import { useAppDispatch } from "../../app/hooks";
 import { v4 as uuidv4 } from "uuid";
 
 import Icons from "../ui/Icons";
-import { setNewLocation } from "../../app/features/Clock/WeatherSlice";
+import { setNewLocation } from "../../features/Clock/WeatherSlice";
 // import { useGetCurrentWeatherByZipCodeQuery } from "../../app/features/apiSlice";
 
 const SetNewLocation: React.FC = () => {
