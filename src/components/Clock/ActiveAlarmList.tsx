@@ -8,9 +8,9 @@ const ActiveAlarmList: React.FC = () => {
         return (
           <li
             key={alarm.alarmId}
-            className="shadow-xl bg-slate-100 text-black text-center p-4 rounded-xl"
+            className="shadow-xl bg-slate-100 text-black text-center rounded-xl"
           >
-            <p>{alarm.alarmTime.toUpperCase()}</p>
+            <p className="py-2 px-3">{alarm.alarmTime.toUpperCase()}</p>
           </li>
         );
       })}
@@ -19,7 +19,3 @@ const ActiveAlarmList: React.FC = () => {
 };
 
 export default ActiveAlarmList;
-
-//TODO:
-//* When <li> is clicked, how to delete/edit/rename alarm?
-//*

@@ -36,18 +36,18 @@ const SetNewLocation: React.FC = () => {
     //* Maybe have a recentLocations array when submitted?
     //* Output favoriteLocations array to user
 
-    <div className="col-span-1 h-full flex flex-col justify-between w-full p-4 bg-white border-[1px] rounded-xl shadow-xl">
-      <h3 className="text-center text-blue-500 text-4xl tracking-wider py-10">
+    <div className="col-span-1 h-full flex flex-col justify-between w-full bg-white border-[1px] rounded-xl shadow-xl">
+      <h3 className="text-center text-blue-500 text-4xl tracking-wider pt-10">
         SET
         <br />
         NEW
         <br />
         LOCATION
       </h3>
-      <div>{}</div>
-      <div className="justify-self-end shadow-xl rounded-lg h-9/12">
+      <div className="mx-auto">PUT SOMETHING HERE</div>
+      <div className="justify-self-end shadow-xl rounded-lg">
         <form
-          className="flex flex-col justify-center bg-blue-500 h-full py-20 px-4 lg:py-10 gap-6 w-full mx-auto rounded-b-xl shadow-lg"
+          className="flex flex-col justify-center bg-blue-500 h-full py-10 px-4 gap-6 w-full mx-auto rounded-b-xl shadow-lg"
           onSubmit={handleSubmit}
         >
           <div className="flex gap-4 w-full justify-center">

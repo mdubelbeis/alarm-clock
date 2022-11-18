@@ -137,7 +137,7 @@ const SetNewAlarm: React.FC = () => {
               <select
                 name="hourCount"
                 id="hourCount"
-                className="w-fit rounded-md p-3"
+                className="w-fit rounded-md p-3 disabled:opacity-50"
                 disabled={!alarmPower}
               >
                 {hourCount.map((hour) => {
@@ -160,7 +160,7 @@ const SetNewAlarm: React.FC = () => {
               <select
                 name="minutesCount"
                 id="minutesCount"
-                className="w-fit rounded-md p-3"
+                className="w-fit rounded-md p-3 disabled:opacity-50"
                 disabled={!alarmPower}
               >
                 {minutes.map((min) => handleOutput(min))}
@@ -172,7 +172,7 @@ const SetNewAlarm: React.FC = () => {
                 AM/PM
               </label>
               <select
-                className="rounded-md p-3"
+                className="rounded-md p-3 disabled:opacity-50"
                 name="amOrPm"
                 id="amOrPm"
                 disabled={!alarmPower}
@@ -184,9 +184,7 @@ const SetNewAlarm: React.FC = () => {
           </div>
           <div>
             <button
-              className={`py-2 px-4 rounded-lg bg-white text-blue-500 ${
-                alarmPower ? "" : "bg-slate-300 opacity-40"
-              }`}
+              className={`py-2 px-4 rounded-lg bg-white text-blue-500 disabled:opacity-50`}
               disabled={!alarmPower}
             >
               ADD
