@@ -5,7 +5,7 @@ import Header from "./components/Header";
 const App = () => {
   return (
     <>
-      <div className="flex flex-col relative w-full max-w-6xl mx-auto mb-20">
+      <div className="flex flex-col relative w-full max-w-7xl mx-auto p-4 mb-20">
         <Header />
         <main>
           <Outlet />
